@@ -1,0 +1,97 @@
+# ========================
+# Code-Sprachen zuweisen
+# ========================
+
+*.py   linguist-language=Python
+*.js   linguist-language=JavaScript
+*.ts   linguist-language=TypeScript
+*.jsx  linguist-language=JavaScript
+*.tsx  linguist-language=TypeScript
+*.java linguist-language=Java
+*.kt   linguist-language=Kotlin
+*.c    linguist-language=C
+*.h    linguist-language=C
+*.cpp  linguist-language=C++
+*.hpp  linguist-language=C++
+*.cs   linguist-language=C#
+*.go   linguist-language=Go
+*.php  linguist-language=PHP
+*.rb   linguist-language=Ruby
+*.rs   linguist-language=Rust
+*.swift linguist-language=Swift
+*.sh   linguist-language=Shell
+*.bat  linguist-language=Batchfile
+*.ps1  linguist-language=PowerShell
+*.pl   linguist-language=Perl
+*.r    linguist-language=R
+*.scala linguist-language=Scala
+*.dart linguist-language=Dart
+*.lua  linguist-language=Lua
+
+# ========================
+# Markup / Datenformate
+# ========================
+
+*.html linguist-language=HTML
+*.css  linguist-language=CSS
+*.scss linguist-language=SCSS
+*.yml  linguist-language=YAML
+*.yaml linguist-language=YAML
+*.json linguist-language=JSON
+*.xml  linguist-language=XML
+*.toml linguist-language=TOML
+*.ini  linguist-language=INI
+*.cfg  linguist-language=INI
+*.md   linguist-language=Markdown
+
+# ========================
+# Dokumentation markieren
+# ========================
+
+README*        linguist-documentation=true
+LICENSE*       linguist-documentation=true
+CHANGELOG*     linguist-documentation=true
+CONTRIBUTING*  linguist-documentation=true
+CODE_OF_CONDUCT* linguist-documentation=true
+SECURITY*      linguist-documentation=true
+docs/**        linguist-documentation=true 
+
+# ========================
+# Vendored / externe Dependencies
+# ========================
+
+*.min.js       linguist-vendored=true
+*.min.css      linguist-vendored=true
+
+node_modules/** linguist-vendored=true
+vendor/**       linguist-vendored=true
+third_party/**  linguist-vendored=true
+external/**     linguist-vendored=true
+
+# ========================
+# Build / Generated Files
+# ========================
+
+dist/**        linguist-generated=true
+build/**       linguist-generated=true
+coverage/**    linguist-generated=true
+out/**         linguist-generated=true
+
+# ========================
+# Assets
+# ========================
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.svg binary
+*.pdf binary
+*.zip binary
+*.tar binary
+*.gz binary
+
+# ========================
+# Ordner ignorieren
+# ========================
+#.docs/** linguist-vendored=true
