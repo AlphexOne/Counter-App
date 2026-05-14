@@ -1,4 +1,4 @@
-# TEMPLATE
+# Tracking-App
 
 <!-- [![Gitea](https://img.shields.io/badge/Gitea-609926?logo=gitea&logoColor=white)](https://about.gitea.com/)
 [![Open Issues](https://img.shields.io/badge/GitHub-Issues-red?logo=github)](https://github.com/sonnytricky/TEMPLATES/issues/new)
@@ -202,13 +202,9 @@ Wie wurde getestet?
 
 # LICENSE
 
-```text
-## Lizenz
-
 Dieses Projekt steht unter der GNU General Public License v3.0.
 
 Weitere Informationen siehe `LICENSE` oder:
 https://www.gnu.org/licenses/gpl-3.0.en.html
-```
 
 ---
