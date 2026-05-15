@@ -190,10 +190,6 @@ input {
   outline: none;
 }
 
-.screen{
-  position:relative;
-}
-
 .footer{
   position:absolute;
 
@@ -250,7 +246,6 @@ input {
     display:none;
   }
 
-  /* OPTIONAL */
   .content{
     padding-top:20px;
 
