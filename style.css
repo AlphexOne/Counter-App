@@ -1,0 +1,235 @@
+/*
+ * TRACKING-APP
+ * Copyright (C) 2026 sonnytricky
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
+:root {
+  /* Background colors */
+  --bg-desktop: #626363;
+
+  --bg-primary: #0d0d0d;
+  --bg-secondary: #151519;
+  --bg-card-primary: #1f1f25;
+  --bg-card-secondary: #0e0e11;
+  --bg-card-hover: #222228;
+  --bg-hover: #2a2a32;
+  --bg-input: #626363;
+  --input-border: #ffffff14;
+
+  /* Accent colors */
+  --accent-primary: #ff1493;
+  --accent-secondary: #ff6b35;
+
+  /* Text colors */
+  --text-primary: #f0f2f5;
+  --text-secondary: #d0d2d5;
+  --text-muted: #9a9ca0;
+  --text-disabled: #5a5c60;
+
+  /* Semantic colors */
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --info: #3b82f6;
+
+  /* button */
+  --btn-primary: #f0f2f5;
+  --btn-bg: #673ab7;
+  --btn-hover: #ff5722;
+
+  /* Checkboxen */
+  --checkbox-primary: #673ab7; /*#00FF85; */
+}
+
+/* =========================
+   IPHONE 15 PRO SIMULATION
+   ========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* height:100vh; */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #bdbdbd;
+
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* IPHONE FRAME */
+.app {
+  /* iPhone 15 Pro Maße */
+  width: 393px;
+  height: 852px;
+
+  /* min-width: 393px; */
+  max-height: 852px;
+
+  background: #000;
+
+  border-radius: 55px;
+
+  padding: 12px;
+
+  position: relative;
+
+  box-shadow:
+    0 0 0 2px #222,
+    0 30px 80px rgba(0, 0, 0, 0.35);
+
+  overflow: hidden;
+}
+
+/* DISPLAY */
+.screen {
+  width: 100%;
+  height: 100%;
+
+  background: white;
+
+  border-radius: 42px;
+
+  overflow: hidden;
+
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* DYNAMIC ISLAND */
+.island {
+  position: absolute;
+
+  top: 14px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: 125px;
+  height: 35px;
+
+  background: black;
+
+  border-radius: 999px;
+
+  z-index: 1000;
+}
+
+/* STATUSBAR */
+.statusbar {
+  height: 55px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 28px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  flex-shrink: 0;
+}
+
+/* APP CONTENT */
+.content {
+  flex: 1;
+
+  overflow: auto;
+
+  padding: 20px;
+}
+
+/* TITEL */
+h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+/* BUTTON */
+button {
+  width: 100%;
+
+  padding: 17px;
+
+  border: none;
+  border-radius: 18px;
+
+  background: black;
+  color: white;
+
+  font-size: 17px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+/* INPUT */
+input {
+  width: 100%;
+
+  padding: 16px;
+
+  border-radius: 16px;
+
+  border: 1px solid #d0d0d0;
+
+  font-size: 16px;
+
+  outline: none;
+}
+
+/* SCROLLBAR AUSBLENDEN */
+.content::-webkit-scrollbar {
+  display: none;
+}
+
+/* HANDY */
+@media (max-width: 500px) {
+
+  body{
+    background:white;
+  }
+
+  /* APP FULLSCREEN */
+  .app{
+    width:100%;
+    height:100dvh;
+
+    border-radius:0;
+    padding:0;
+
+    box-shadow:none;
+    background:white;
+  }
+
+  /* DISPLAY */
+  .screen{
+    border-radius:0;
+  }
+
+  /* DYNAMIC ISLAND AUS */
+  .island{
+    display:none;
+  }
+
+  /* STATUSBAR AUS */
+  .statusbar{
+    display:none;
+  }
+
+  /* OPTIONAL */
+  .content{
+    padding-top:20px;
+  }
+
+}

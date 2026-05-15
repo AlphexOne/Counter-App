@@ -1,0 +1,29 @@
+name: publish
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - index.html
+      - app.js
+      - style.css
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+          publish_branch: gh-pages
+          force_orphan: true
