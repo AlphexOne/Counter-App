@@ -6,10 +6,3 @@ labels:
 assignees: []
 ---
 
-# Beschreibung
-Bitte beschreibe den Fehler so detailliert wie möglich.
-
-# Schritte zum Reproduzieren
-1. ...
-2. ...
-3. ...

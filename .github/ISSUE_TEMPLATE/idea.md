@@ -6,5 +6,3 @@ labels:
 assignees: []
 ---
 
-## Beschreibung
-Kurzbeschreibung der Idee
