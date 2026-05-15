@@ -202,6 +202,8 @@ Wie wurde getestet?
 
 # LICENSE
 
+Copyright (C) 2026 sonnytricky
+
 Dieses Projekt steht unter der GNU General Public License v3.0.
 
 Weitere Informationen siehe `LICENSE` oder:
