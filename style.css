@@ -192,16 +192,16 @@ input {
 }
 
 .footer{
-  position:absolute;
+  position:fixed;
 
   bottom:0;
   left:0;
 
   width:100%;
-
   height:70px;
 
-  padding-bottom:env(safe-area-inset-bottom);
+  padding-top: 20px;
+  padding-bottom: calc(20px + env(safe-area-inset-bottom));
 
   background:#111;
   color:white;
@@ -228,7 +228,7 @@ input {
   /* APP FULLSCREEN */
   .app{
     width:100%;
-    height:100dvh;
+    height:90dvh;
 
     border-radius:0;
     padding:0;
@@ -254,8 +254,7 @@ input {
 
   .content{
     padding-top:20px;
-
-    padding-bottom:90px;
+    padding-bottom:70px;
   }
 
 }
