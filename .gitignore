@@ -24,6 +24,7 @@
 !*/.docs/
 !*/.github/ISSUE_TEMPLATE/
 !*/.github/workflows/
+!/.github/nichtVerwendeteWorkflows/
 
 ##############################################
 # Ausnahme: diese Dateien NICHT ignorieren
@@ -36,8 +37,9 @@
 !/.github/ISSUE_TEMPLATE/feature_request.md
 !/.github/ISSUE_TEMPLATE/idea.md
 !/.github/ISSUE_TEMPLATE/task.md
-!/.github/workflows/Demo.yaml
-!/.github/workflows/publish.yml
+!/.github/nichtVerwendeteWorkflows/Demo.yaml
+!/.github/nichtVerwendeteWorkflows/publish.yml
+!/.github/workflows/deploy.yml
 !/.github/PULL_REQUEST_TEMPLATE.md
 !/.gitattributes
 !/.gitignore
