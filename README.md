@@ -202,7 +202,7 @@ Wie wurde getestet?
 
 # LICENSE
 
-Copyright (C) 2026 sonnytricky
+Copyright (C) 2026 AlphexOne
 
 Dieses Projekt steht unter der GNU General Public License v3.0.
 
