@@ -198,7 +198,7 @@ input {
   height:70px;
 
   /* padding-top: 20px; */
-  padding-bottom: env(safe-area-inset-bottom);
+  padding-bottom: calc(20px + env(safe-area-inset-bottom));
 
   background:#111;
   color:white;
