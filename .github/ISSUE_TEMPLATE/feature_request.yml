@@ -1,0 +1,14 @@
+name: 🚀 Feature Request
+description: Proposal for a new feature 
+
+labels:
+  - features
+
+projects:
+  - AlphexOne/6
+
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Beschreibung
