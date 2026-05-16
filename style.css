@@ -207,7 +207,7 @@ input {
   justify-content:space-around;
   align-items:center;
 
-  /* flex-shrink:0; */
+  flex-shrink:0;
 
   z-index:100;
 }
