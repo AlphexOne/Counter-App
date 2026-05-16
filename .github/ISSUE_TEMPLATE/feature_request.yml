@@ -4,8 +4,8 @@ description: Proposal for a new feature
 labels:
   - features
 
-projects:
-  - AlphexOne/6
+# projects:
+#   - AlphexOne/6
 
 body:
   - type: textarea
