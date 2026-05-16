@@ -265,6 +265,6 @@ input {
 
   .content{
     padding-top:20px;
-    padding-bottom:70px;
+    padding-bottom: calc(70px + env(safe-area-inset-bottom));
   }
 }
