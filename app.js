@@ -1,5 +1,5 @@
 /*
- * TRACKING-APP
+ * COUNTER-APP
  * Copyright (C) 2026 AlphexOne
  * SPDX-License-Identifier: GPL-3.0-or-later
  */

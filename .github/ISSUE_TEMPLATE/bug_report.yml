@@ -4,8 +4,8 @@ description: Something isn't working
 labels:
   - bug
 
-#projects:
-#  - AlphexOne/6
+projects:
+  - AlphexOne/8
 
 body:
   - type: textarea

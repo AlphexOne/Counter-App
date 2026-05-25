@@ -4,8 +4,8 @@ description: General task
 labels:
   - task
 
-# projects:
-#   - AlphexOne/6
+projects:
+  - AlphexOne/8
 
 body:
   - type: textarea
