@@ -259,6 +259,7 @@ input{
 
   width:auto;
 
+  padding-top: 0;
   padding:0;
 
   font-size:26px;
@@ -289,9 +290,11 @@ input{
     box-shadow:none;
   }
 
+
   .screen{
     border-radius:0;
-    padding-bottom: 70px;
+
+    padding-bottom: calc(70px + env(safe-area-inset-bottom));
     padding-top: 30px;
   }
 
@@ -309,10 +312,24 @@ input{
   .footer{
     position: fixed;
 
-    height:70px; 
+    bottom: 0;
+    left: 0;
 
-    padding-bottom: 70px;
-    padding-bottom: calc(env(safe-area-inset-bottom) + 70px);
+    width: 100%;
+
+    height: calc(70px + env(safe-area-inset-bottom));
+
+    padding-bottom: env(safe-area-inset-bottom);
+
+    background:#111;
+
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+
+    color:white;
+
+    z-index:100;
   }
 }
 
@@ -399,6 +416,21 @@ input{
 
   text-align: center;
 }
+
+.nav-btn{
+
+  background:none;
+  border:none;
+
+  width:auto;
+
+  padding-top: 0;
+  padding:0;
+
+  font-size:26px;
+
+  color:white;
+} 
 
 .back-btn {
   margin-bottom: 20px;
