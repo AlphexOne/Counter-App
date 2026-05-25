@@ -307,7 +307,10 @@ input{
     padding-top:30px;
   }
   .footer{
-    padding-bottom: calc(env(safe-area-inset-bottom) + 15px);
+    position: fixed;
+
+    height:70px; 
+    padding-bottom: calc(env(safe-area-inset-bottom) + 30px);
   }
 }
 
