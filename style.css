@@ -306,6 +306,9 @@ input{
   .content{
     padding-top:20px;
   }
+  .footer{
+    padding-bottom: calc(env(safe-area-inset-bottom));
+  }
 }
 
 /* =========================
