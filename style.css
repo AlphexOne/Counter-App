@@ -311,6 +311,19 @@ input{
 }
 
 /* =========================
+    Footer
+========================= */
+
+footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  
+  bottom: calc(env(safe-area-inset-bottom) + 10px)
+}
+
+
+/* =========================
     COUNTER APP
 ========================= */
 
