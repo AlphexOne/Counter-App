@@ -291,7 +291,8 @@ input{
 
   .screen{
     border-radius:0;
-    padding-bottom: 50px;
+    padding-bottom: 70px;
+    padding-top: 30px;
   }
 
   .island{
@@ -302,8 +303,7 @@ input{
     display:none;
   }
 
-.content{
-
+  .content{
     padding-top:20px;
   }
 }
