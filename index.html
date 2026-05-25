@@ -1,76 +1,106 @@
- <!-- * TRACKING-APP
+<!--
+ * TRACKING-APP
  * Copyright (C) 2026 AlphexOne
- * SPDX-License-Identifier: GPL-3.0-or-later -->
+ * SPDX-License-Identifier: GPL-3.0-or-later
+-->
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
 
-  <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-  />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
 
-  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 
-  <title>Tracking-App</title>
-</head>
+    <title>Tracking-App</title>
+  </head>
 
+  <body>
+    <div class="app">
+      <div class="screen">
+        <div class="island"></div>
 
-<body>
-  
-<div class="app">
-
-  <div class="screen">
-
-    <div class="island"></div>
-
-      <div class="statusbar">
-        <span id="uhr">9:41</span>
-        <span>📶 🔋</span>
-      </div>
-
-        <div class="content">
-
-          <h1>TRACKING-APP</h1>
-
-          <input placeholder="Name">
-
-          <br><br>
-
-          <button>Plus</button>
-          <button>minus</button>
-
+        <div class="statusbar">
+          <span id="uhr">9:41</span>
+          <span>📶 🔋</span>
         </div>
 
-          <div class="footer">
+        <div class="content">
+          <!-- MAIN VIEW -->
+          <div id="mainView">
+            <div class="header-row">
+              <h1>TRACKING-APP</h1>
 
-            <button class="nav-btn">
-              <i class="fa-solid fa-house"></i>
-            </button>
+              <button id="addListBtn" class="circle-btn">
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
 
-            <button class="nav-btn">
-              <i class="fa-solid fa-chart-simple"></i>
-            </button>
+            <input
+              type="text"
+              id="listInput"
+              placeholder="Listenname eingeben"
+            />
 
-            <button class="nav-btn">
-              <i class="fa-solid fa-plus"></i>
-            </button>
-
-            <button class="nav-btn">
-              <i class="fa-solid fa-gear"></i>
-            </button>
-
+            <div id="listContainer"></div>
           </div>
 
-  </div>
+          <!-- LIST VIEW -->
+          <div id="listView" class="hidden">
+            <button id="backBtn" class="back-btn">
+              <i class="fa-solid fa-arrow-left"></i>
+              Zurück
+            </button>
 
-</div>
+            <h1 id="listTitle">Liste</h1>
 
-</body>
+            <div class="counter-box">
+              <span id="counterValue">0</span>
+            </div>
 
+            <div class="counter-buttons">
+              <button id="plusBtn" class="success-btn">+</button>
 
-  <script src="app.js"></script>
+              <button id="minusBtn" class="danger-btn">-</button>
+
+              <button id="resetBtn" class="warning-btn">Reset</button>
+            </div>
+
+            <div class="update-box">
+              <p>Letztes Update:</p>
+              <span id="lastUpdated"> Noch nicht aktualisiert </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer">
+          <button class="nav-btn active">
+            <i class="fa-solid fa-house"></i>
+          </button>
+
+          <button class="nav-btn">
+            <i class="fa-solid fa-chart-simple"></i>
+          </button>
+
+          <button class="nav-btn">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+
+          <button class="nav-btn">
+            <i class="fa-solid fa-gear"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
 </html>

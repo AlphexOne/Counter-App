@@ -1,270 +1,431 @@
-/*
- * TRACKING-APP
- * Copyright (C) 2026 AlphexOne
- * SPDX-License-Identifier: GPL-3.0-or-later
- */
+/* =========================
+    IPHONE 15 PRO SIMULATION
+========================= */
 
 :root {
-  /* Background colors */
-  --bg-desktop: #626363;
 
-  --bg-primary: #0d0d0d;
-  --bg-secondary: #151519;
   --bg-card-primary: #1f1f25;
-  --bg-card-secondary: #0e0e11;
   --bg-card-hover: #222228;
-  --bg-hover: #2a2a32;
-  --bg-input: #626363;
-  --input-border: #ffffff14;
 
-  /* Accent colors */
-  --accent-primary: #ff1493;
-  --accent-secondary: #ff6b35;
-
-  /* Text colors */
-  --text-primary: #f0f2f5;
-  --text-secondary: #d0d2d5;
   --text-muted: #9a9ca0;
-  --text-disabled: #5a5c60;
 
-  /* Semantic colors */
   --success: #10b981;
   --warning: #f59e0b;
   --error: #ef4444;
-  --info: #3b82f6;
 
-  /* button */
-  --btn-primary: #f0f2f5;
   --btn-bg: #673ab7;
-  --btn-hover: #ff5722;
-
-  /* Checkboxen */
-  --checkbox-primary: #673ab7; /*#00FF85; */
 }
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+
+  margin:0;
+
+  min-height:100vh;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  background:#bdbdbd;
+
+  font-family:-apple-system,
+  BlinkMacSystemFont,
+  sans-serif;
+}
+
 
 /* =========================
-   IPHONE 15 PRO SIMULATION
-   ========================= */
+    IPHONE FRAME
+========================= */
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+.app{
 
-body {
-  margin: 0;
-  /* min-height:100dvh; */
+  width:393px;
+  height:852px;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background:#000;
 
-  background: #bdbdbd;
+  border-radius:55px;
 
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-}
+  padding:12px;
 
-/* IPHONE FRAME */
-.app {
-  /* iPhone 15 Pro Maße */
-  width: 393px;
-  height: 100dvh;
-  max-height: 852px;
+  position:relative;
 
-  background: #000;
-
-  border-radius: 55px;
-  padding: 12px;
-
-  position: relative;
+  overflow:hidden;
 
   box-shadow:
     0 0 0 2px #222,
-    0 30px 80px rgba(0, 0, 0, 0.35);
-
-  overflow: hidden;
+    0 30px 80px rgba(0,0,0,.35);
 }
 
-/* DISPLAY */
-.screen {
-  width: 100%;
-  height: 100%;
 
-  background: white;
+/* =========================
+    DISPLAY
+========================= */
 
-  border-radius: 42px;
+.screen{
 
-  overflow: hidden;
+  width:100%;
+  height:100%;
 
-  position: relative;
+  background:white;
 
-  display: flex;
-  flex-direction: column;
+  border-radius:42px;
+
+  overflow:hidden;
+
+  position:relative;
+
+  display:flex;
+  flex-direction:column;
 }
 
-/* DYNAMIC ISLAND */
-.island {
-  position: absolute;
 
-  top: 14px;
-  left: 50%;
+/* =========================
+    DYNAMIC ISLAND
+========================= */
 
-  transform: translateX(-50%);
+.island{
 
-  width: 125px;
-  height: 35px;
+  position:absolute;
 
-  background: black;
+  top:14px;
+  left:50%;
 
-  border-radius: 999px;
+  transform:translateX(-50%);
 
-  z-index: 1000;
+  width:125px;
+  height:35px;
+
+  background:black;
+
+  border-radius:999px;
+
+  z-index:1000;
 }
 
-/* STATUSBAR */
-.statusbar {
-  height: 55px;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+/* =========================
+    STATUSBAR
+========================= */
 
-  padding: 0 28px;
+.statusbar{
 
-  font-size: 14px;
-  font-weight: 600;
+  height:55px;
 
-  flex-shrink: 0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:0 28px;
+
+  font-size:14px;
+  font-weight:600;
+
+  flex-shrink:0;
 }
 
-/* APP CONTENT */
-.content {
-  flex: 1;
-  overflow: auto;
 
-  padding: 20px;
-  padding-bottom:90px;  /*war auf 20*/
-  padding-bottom: calc(90px + env(safe-area-inset-bottom));
+/* =========================
+    CONTENT
+========================= */
 
-  min-height: 0;
+.content{
+
+  flex:1;
+
+  overflow:auto;
+
+  padding:20px;
+
+  padding-bottom:90px;
+
+  min-height:0;
 }
 
-/* TITEL */
-h1 {
-  font-size: 32px;
-  margin-bottom: 20px;
+
+/* =========================
+    TITEL
+========================= */
+
+h1{
+
+  font-size:32px;
+
+  margin-bottom:20px;
 }
 
-/* BUTTON */
-button {
-  width: 100%;
 
-  padding: 17px;
+/* =========================
+    BUTTONS
+========================= */
 
-  border: none;
-  border-radius: 18px;
+button{
 
-  background: black;
-  color: white;
+  width:100%;
 
-  font-size: 17px;
-  font-weight: 600;
+  padding:17px;
 
-  cursor: pointer;
+  border:none;
+
+  border-radius:18px;
+
+  background:black;
+  color:white;
+
+  font-size:17px;
+  font-weight:600;
+
+  cursor:pointer;
 }
 
-/* INPUT */
-input {
-  width: 100%;
 
-  padding: 16px;
+/* =========================
+    INPUT
+========================= */
 
-  border-radius: 16px;
+input{
 
-  border: 1px solid #d0d0d0;
+  width:100%;
 
-  font-size: 16px;
+  padding:16px;
 
-  outline: none;
+  border-radius:16px;
+
+  border:1px solid #d0d0d0;
+
+  font-size:16px;
+
+  outline:none;
 }
+
+
+/* =========================
+    FOOTER
+========================= */
 
 .footer{
+
   position:absolute;
+
   bottom:0;
   left:0;
 
   width:100%;
-  min-height:70px;
-
-  /* padding-top: 20px; */
-  padding-bottom: env(safe-area-inset-bottom);
+  height:80px;
 
   background:#111;
-  color:white;
 
   display:flex;
   justify-content:space-around;
   align-items:center;
 
-  flex-shrink:0;
-  z-index:100;
+  color:white;
 }
 
 .nav-btn{
+
   background:none;
   border:none;
 
-  color:white;
+  width:auto;
+
+  padding:0;
 
   font-size:26px;
 
-  width:auto;
-  padding:0;
-
-  cursor:pointer;
+  color:white;
 }
 
-/* SCROLLBAR AUSBLENDEN */
-.content::-webkit-scrollbar {
-  display: none;
-}
+/* =========================
+    MOBILE
+========================= */
 
-/* HANDY */
-@media (max-width: 500px) {
+@media (max-width:500px){
 
   body{
     background:#111;
   }
 
-  /* APP FULLSCREEN */
   .app{
+
     width:100%;
+    height:100vh;
 
     border-radius:0;
+
     padding:0;
 
     box-shadow:none;
-    background: #111;
   }
 
-  /* DISPLAY */
   .screen{
     border-radius:0;
   }
 
-  /* DYNAMIC ISLAND AUS */
   .island{
     display:none;
   }
 
-  /* STATUSBAR AUS */
   .statusbar{
     display:none;
   }
+}/* =========================
+    COUNTER APP
+========================= */
 
-  .content{
-    padding-top:20px;
-    padding-bottom: calc(70px + env(safe-area-inset-bottom));
-  }
+.hidden {
+  display: none;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+
+  margin-bottom: 20px;
+}
+
+.circle-btn {
+  width: 58px;
+  height: 58px;
+
+  border-radius: 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--btn-bg);
+
+  flex-shrink: 0;
+}
+
+.circle-btn i {
+  font-size: 22px;
+}
+
+#listContainer {
+  margin-top: 24px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.list-card {
+  background: var(--bg-card-primary);
+
+  border-radius: 22px;
+
+  padding: 18px;
+
+  color: white;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.list-card:hover {
+  background: var(--bg-card-hover);
+}
+
+.list-card h3 {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+
+.list-card p {
+  color: var(--text-muted);
+}
+
+.empty-box {
+  background: var(--bg-card-primary);
+
+  border-radius: 20px;
+
+  padding: 18px;
+
+  color: var(--text-muted);
+
+  text-align: center;
+}
+
+.back-btn {
+  margin-bottom: 20px;
+
+  background: transparent;
+  color: black;
+
+  padding: 0;
+
+  text-align: left;
+}
+
+.counter-box {
+  margin-top: 30px;
+
+  background: var(--bg-card-primary);
+
+  border-radius: 30px;
+
+  padding: 40px 20px;
+
+  text-align: center;
+}
+
+#counterValue {
+  color: white;
+
+  font-size: 72px;
+  font-weight: 700;
+}
+
+.counter-buttons {
+  display: flex;
+  gap: 12px;
+
+  margin-top: 24px;
+}
+
+.counter-buttons button {
+  flex: 1;
+}
+
+.success-btn {
+  background: var(--success);
+}
+
+.danger-btn {
+  background: var(--error);
+}
+
+.warning-btn {
+  background: var(--warning);
+}
+
+.update-box {
+  margin-top: 28px;
+
+  background: var(--bg-card-primary);
+
+  border-radius: 22px;
+
+  padding: 18px;
+
+  color: white;
+}
+
+.update-box p {
+  color: var(--text-muted);
+
+  margin-bottom: 8px;
 }
