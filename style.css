@@ -310,6 +310,8 @@ input{
     position: fixed;
 
     height:70px; 
+
+    padding-bottom: 70px;
     padding-bottom: calc(env(safe-area-inset-bottom) + 30px);
   }
 }
@@ -328,6 +330,7 @@ input{
   align-items: center;
   gap: 15px;
 
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 
