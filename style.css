@@ -239,8 +239,7 @@ input{
 
   height:70px;
 
-  padding-bottom:
-    max(env(safe-area-inset-bottom), 14px);
+  padding-bottom: calc(env(safe-area-inset-bottom) + 10px);
 
   background:#111;
 
@@ -309,19 +308,6 @@ input{
     padding-bottom: calc(65px + env(safe-area-inset-bottom));
   }
 }
-
-/* =========================
-    Footer
-========================= */
-
-footer {
-  position: fixed;
-  left: 0;
-  right: 0;
-  
-  bottom: calc(env(safe-area-inset-bottom) + 10px)
-}
-
 
 /* =========================
     COUNTER APP
