@@ -332,7 +332,7 @@ button:active {
 
     .footer {
       position: fixed;
-      
+
       padding-bottom: 70px;
       padding-bottom: env(safe-area-inset-bottom);
 
