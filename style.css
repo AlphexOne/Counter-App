@@ -4,175 +4,179 @@
 */
 
 :root {
-    --bg-dark: #09090b;
-    --bg-card-primary: #1c1c1e;
-    --bg-card-hover: #2c2c2e;
-    --text-main: #ffffff;
-    --text-muted: #8e8e93;
-    --accent: #0a84ff;
-    --success: #30d158;
-    --error: #ff453a;
-    --warning: #ff9f0a;
+  --bg-dark: #09090b;
+  --bg-card-primary: #1c1c1e;
+  --bg-card-hover: #2c2c2e;
+  --text-main: #ffffff;
+  --text-muted: #8e8e93;
+  --accent: #0a84ff;
+  --success: #30d158;
+  --error: #ff453a;
+  --warning: #ff9f0a;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
 }
 
-body { 
+body {
   background-color: #222;
-  display: flex; 
+  display: flex;
   justify-content: center;
-  align-items: center; 
-  min-height: 100vh; 
+  align-items: center;
+  min-height: 100vh;
   /* ÄNDERUNG: 'overflow: hidden' entfernen, damit der PC scrollen kann, falls das Fenster winzig ist */
-  overflow: auto; 
+  overflow: auto;
   padding: 0;
 }
 
 /* ========================= IPHONE FRAME SIMULATION ========================= */
-.app { 
-  width: 393px; /* iPhone 15 Pro originale Ratio-Breite */ 
-  height: 700px; 
+.app {
+  width: 393px; /* iPhone 15 Pro originale Ratio-Breite */
+  height: 700px;
   /* ÄNDERUNG: Verhindert, dass die App größer wird als der PC-Bildschirm hoch ist */
-  max-height: 90vh; 
-  background: #000; 
-  border: 12px solid #333; 
-  border-radius: 55px; 
+  max-height: 90vh;
+  background: #000;
+  border: 12px solid #333;
+  border-radius: 55px;
   position: relative;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); 
-  overflow: hidden; 
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
   /* ÄNDERUNG: Erzwingt, dass die Flexbox-Struktur im Inneren bei 'max-height' mitskaliert */
   display: flex;
   flex-direction: column;
 }
 
 .screen {
-    width: 100%;
-    height: 100%;
-    background-color: var(--bg-dark);
-    color: var(--text-main);
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    padding-top: 40px; /* Platz für Dynamic Island & Statusbar */
-    padding-bottom: 34px; /* Platz für iOS Home-Indicator */
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-top: 40px; /* Platz für Dynamic Island & Statusbar */
+  padding-bottom: 34px; /* Platz für iOS Home-Indicator */
 }
 
 /* ========================= DYNAMIC ISLAND ========================= */
 .island {
-    width: 110px;
-    height: 30px;
-    background: #000;
-    border-radius: 20px;
-    position: absolute;
-    top: 11px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
+  width: 110px;
+  height: 30px;
+  background: #000;
+  border-radius: 20px;
+  position: absolute;
+  top: 11px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
 }
 
 /* ========================= STATUSBAR ========================= */
 .statusbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 32px;
-    font-size: 14px;
-    font-weight: 600;
-    height: 20px;
-    position: absolute;
-    top: 16px;
-    width: 100%;
-    z-index: 9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 32px;
+  font-size: 14px;
+  font-weight: 600;
+  height: 20px;
+  position: absolute;
+  top: 16px;
+  width: 100%;
+  z-index: 9;
 }
 
 /* ========================= CONTENT & SCROLLING ========================= */
 .content {
-    flex: 1;
-    overflow-y: auto;
-    padding: 20px 24px;
-    /* margin-bottom: 65px; Abstand zum fixierten Footer */
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 24px;
+  /* margin-bottom: 65px; Abstand zum fixierten Footer */
 }
 
 /* Scrollbar verstecken für den cleanen iOS Look */
 .content::-webkit-scrollbar {
-    width: 0px;
+  width: 0px;
 }
 
 /* ========================= TITEL & INPUT & BUTTONS ========================= */
 h1 {
-    font-size: 28px;
-    font-weight: 700;
+  font-size: 28px;
+  font-weight: 700;
 }
 
 input {
-    width: 100%;
-    background: var(--bg-card-primary);
-    border: none;
-    padding: 14px 16px;
-    border-radius: 12px;
-    color: white;
-    font-size: 16px;
-    margin-top: 16px;
-    outline: none;
+  width: 100%;
+  background: var(--bg-card-primary);
+  border: none;
+  padding: 14px 16px;
+  border-radius: 12px;
+  color: white;
+  font-size: 16px;
+  margin-top: 16px;
+  outline: none;
 }
 
 input::placeholder {
-    color: var(--text-muted);
+  color: var(--text-muted);
 }
 
 button {
-    border: none;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.1s;
+  border: none;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.1s;
 }
 
 button:active {
-    transform: scale(0.96);
+  transform: scale(0.96);
 }
 
 .circle-btn {
-    background: var(--accent);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background: var(--accent);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* ========================= FOOTER (FIXED) ========================= */
 .footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    min-height: 70px;
-    background: rgba(28, 28, 30, 0.85);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding-bottom: 70px;
-    padding-bottom: env(safe-area-inset-bottom);
-    flex-shrink:0;
-    z-index:100;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  min-height: 70px;
+  background: rgba(28, 28, 30, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 70px;
+  padding-bottom: env(safe-area-inset-bottom);
+  flex-shrink: 0;
+  z-index: 100;
 }
 
 .nav-btn {
-    background: none;
-    color: var(--text-muted);
-    font-size: 22px;
-    padding: 10px;
+  background: none;
+  color: var(--text-muted);
+  font-size: 22px;
+  padding: 10px;
 }
 
 .nav-btn.active {
-    color: var(--accent);
+  color: var(--accent);
 }
 
 /* iOS Home Indicator Linie simulierend */
@@ -190,153 +194,158 @@ button:active {
 
 /* ========================= COUNTER APP SPECIFICS ========================= */
 .hidden {
-    display: none !important;
+  display: none !important;
 }
 
 .header-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
 }
 
 .circle-btn {
-    width: 44px;
-    height: 44px;
+  width: 44px;
+  height: 44px;
 }
 
 .circle-btn i {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 #CounterContainer {
-    margin-top: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .Counter-card {
-    background: var(--bg-card-primary);
-    padding: 16px;
-    border-radius: 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
+  background: var(--bg-card-primary);
+  padding: 16px;
+  border-radius: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
 }
 
 .Counter-card:hover {
-    background: var(--bg-card-hover);
+  background: var(--bg-card-hover);
 }
 
 .Counter-card h3 {
-    font-size: 18px;
-    margin-bottom: 4px;
+  font-size: 18px;
+  margin-bottom: 4px;
 }
 
 .Counter-card p {
-    color: var(--text-muted);
-    font-size: 14px;
+  color: var(--text-muted);
+  font-size: 14px;
 }
 
 .delete-btn {
-    background: none;
-    color: var(--error);
-    font-size: 18px;
-    padding: 10px;
+  background: none;
+  color: var(--error);
+  font-size: 18px;
+  padding: 10px;
 }
 
 .back-btn {
-    background: none;
-    color: var(--accent);
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin-bottom: 20px;
-    padding: 5px 0;
+  background: none;
+  color: var(--accent);
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 20px;
+  padding: 5px 0;
 }
 
 .Counter-box {
-    margin-top: 40px;
-    text-align: center;
-    margin-bottom: 40px;
+  margin-top: 40px;
+  text-align: center;
+  margin-bottom: 40px;
 }
 
 #CounterValue {
-    color: white;
-    font-size: 80px;
-    font-weight: 700;
+  color: white;
+  font-size: 80px;
+  font-weight: 700;
 }
 
 .Counter-buttons {
-    display: flex;
-    gap: 12px;
+  display: flex;
+  gap: 12px;
 }
 
 .Counter-buttons button {
-    flex: 1;
-    padding: 18px;
-    border-radius: 14px;
-    font-size: 18px;
-    font-weight: 600;
-    color: white;
+  flex: 1;
+  padding: 18px;
+  border-radius: 14px;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
 }
 
-.success-btn { background: var(--success); }
-.danger-btn { background: var(--error); }
-.warning-btn { background: var(--warning); }
+.success-btn {
+  background: var(--success);
+}
+.danger-btn {
+  background: var(--error);
+}
+.warning-btn {
+  background: var(--warning);
+}
 
 .update-box {
-    margin-top: 35px;
-    text-align: center;
-    font-size: 14px;
+  margin-top: 35px;
+  text-align: center;
+  font-size: 14px;
 }
 
 .update-box p {
-    color: var(--text-muted);
-    margin-bottom: 4px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
 }
 
 #lastUpdated {
-    font-weight: 500;
+  font-weight: 500;
 }
 
 /* ========================= MOBILE NATIVE LOOK ========================= */
 /* Wenn man es auf einem echten Handy öffnet, fällt der Rahmen weg */
 @media (max-width: 400px) {
-    body {
-        background-color: var(--bg-dark);
-    }
-    .app {
-        width: 100vw;
-        height: 100vh;
-        border: none;
-        border-radius: 0;
-    }
-    .screen {
-        padding-top: 48px;
-    }
-    .island {
-        display: none; /* Echte Handys haben ihre eigene Notch/Island */
-    }
+  body {
+    background-color: var(--bg-dark);
+  }
+  .app {
+    width: 100vw;
+    height: 100vh;
+    border: none;
+    border-radius: 0;
+  }
+  .screen {
+    padding-top: 48px;
+  }
+  .island {
+    display: none; /* Echte Handys haben ihre eigene Notch/Island */
+  }
 
-    .statusbar {
-        display: none;
-    }
+  .statusbar {
+    display: none;
+  }
 
-    .content {
-      padding-bottom: calc(70px + env(safe-area-inset-bottom));
-    }
+  .content {
+    padding-bottom: calc(70px + env(safe-area-inset-bottom));
+  }
 
-    .footer {
-      position: fixed;
+  .footer {
+    position: fixed;
 
-      padding-bottom: 70px;
-      padding-bottom: env(safe-area-inset-bottom);
+    padding-bottom: 70px;
+    padding-bottom: env(safe-area-inset-bottom);
 
-      bottom: 0;
-    }
+    bottom: 0;
+  }
 }
-
