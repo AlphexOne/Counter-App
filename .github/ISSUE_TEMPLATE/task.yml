@@ -5,7 +5,7 @@ labels:
   - task
 
 projects:
-  - AlphexOne/8
+  - AlphexOne/11
 
 body:
   - type: textarea
