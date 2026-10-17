@@ -55,9 +55,14 @@
 !/assets/images/logo.png
 !/.gitattributes
 !/.gitignore
-!/app.js
-!/index.html
+!/.prettierignore
+!/.prettierrc
+#!/app.js
+#!/index.html
 !/LICENSE
-!/README.md
-!/style.css
+#!/manifest.json
+!/package-lock.json
+!/package.json
+#!/README.md
+#!/style.css
 
