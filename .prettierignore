@@ -11,14 +11,13 @@
 ##############################################
 # Explizit erlaubte Verzeichnisse
 ##############################################
-# !/.docs/
-# !/.github/
-# !/.github/ISSUE_TEMPLATE/
-# !/.github/workflows/
+!/app/
+
 
 ##############################################
 # Explizit erlaubte Dateien
 ##############################################
-!index.html
-!style.css
-!script.js
+!app/index.html
+!app/style.css
+!app/app.js
+!app/Counter.js

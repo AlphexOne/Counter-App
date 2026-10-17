@@ -26,8 +26,10 @@
 !*/.github/workflows/
 !*/.github/nichtVerwendeteWorkflows/
 !*/.vscode/
+!*/app/
+!*/app/assets/favicons/
 !*/assets/concets/
-!*/assets/favicons/
+
 !*/assets/images/
 
 ##############################################
@@ -48,21 +50,25 @@
 !/.github/workflows/release.yml
 !/.github/PULL_REQUEST_TEMPLATE.md
 !/.vscode/settings.json
+
+# app/
+#!/assets/favicons/apple-touch-icon.png
+#!/assets/favicons/CounterApp-32x32.png
+#!/assets/favicons/favicon.png
+#!/app.js
+#!/index.html
+#!/manifest.json
+#!/style.css
+
 !/assets/concepts/Footer.jpg
-!/assets/favicons/apple-touch-icon.png
-!/assets/favicons/CounterApp-32x32.png
-!/assets/favicons/favicon.png
-!/assets/images/logo.png
+!/assets/images/repo-logo.png
 !/.gitattributes
 !/.gitignore
 !/.prettierignore
 !/.prettierrc
-#!/app.js
-#!/index.html
 !/LICENSE
-#!/manifest.json
 !/package-lock.json
 !/package.json
-#!/README.md
-#!/style.css
+!/README.md
+
 
