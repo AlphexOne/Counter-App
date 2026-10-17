@@ -21,7 +21,7 @@
 ##############################################
 # Verzeichnisse wieder erlauben                  # !*/Unterordner/
 ##############################################
-!*/.docs/
+#!*/.docs/
 !*/.github/ISSUE_TEMPLATE/
 !*/.github/workflows/
 !*/.github/nichtVerwendeteWorkflows/
@@ -37,7 +37,7 @@
 # - für Dateien in Unterordnern                  # !/Pfad/zur/Datein.txt
 # - für einzelne Dateien                         # !Datein.txt
 ##############################################
-!/.docs/Überlegungen.md
+#!/.docs/Überlegungen.md
 !/.github/ISSUE_TEMPLATE/bug_report.yml
 !/.github/ISSUE_TEMPLATE/feature_request.yml
 !/.github/ISSUE_TEMPLATE/idea.yml
