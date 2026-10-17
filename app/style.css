@@ -1,0 +1,493 @@
+/*
+ * COUNTER APP
+ * Copyright (C) 2026 AlphexOne
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
+/* deviniert das HTML */
+:root {
+    --bg-body: #222;
+    --bg-app: #09090b;
+    --bg-navbar: rgba(255, 255, 255, 0.2);
+    --bg-card-primary: #1c1c1e;
+    --bg-card-hover: #2c2c2e;
+    --bg-input: #909096;
+    --card-menu-btn: #8e8e93;
+    --text-main: #ffffff;
+    --text-muted: #a09999;
+    --text-input: #050505;
+    --text-placeholder: #4f4b4b;
+    --minusBtn: #ff9f0a;
+    --resetBtn: #ff453a;
+    --plusBtn: #30d158;
+    --accent: #0a84ff;
+    --success: #30d158;
+    --error: #ff453a;
+    --warning: #ff9f0a;
+}
+
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Breite und Höhe enthalten Padding und Border */
+    font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+        sans-serif;
+}
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+/* Text */
+h1,
+h2,
+p,
+span {
+    color: var(--text-main);
+}
+
+body {
+    background-color: var(--bg-body);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.app {
+    position: relative;
+    width: 100%;
+    max-width: 430px;
+    height: 90vh;
+    height: 90dvh;
+    min-height: 0;
+    border-radius: 20px;
+    box-sizing: border-box;
+    background-color: var(--bg-app);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.screen {
+    padding: 20px;
+    overflow: hidden;
+}
+
+header {
+    display: flex;
+    min-height: calc(5rem + env(safe-area-inset-top));
+    padding: calc(1rem + env(safe-area-inset-top)) 2rem 1rem;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    z-index: 5;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+main {
+    flex: 1; /* nimmt den ganzen freien Platz */
+    overflow-y: auto; /* scrollbar, nach unten */
+    overflow-x: hidden;
+    padding: 1rem;
+}
+
+footer {
+    flex-shrink: 0; /* verhindert, dass der Footer kleiner wird */
+}
+
+/* ========================= SCROLLBARER INHALT ========================= */
+.content {
+    /* Nimmt dynamisch den gesamten restlichen Platz zwischen Header und Navbar ein */
+    flex: 1 1 auto;
+    /* Aktiviert das Scrollen NUR in diesem Bereich, sobald er voll ist */
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* Erhöhtes Padding unten, damit gescrollte Kacheln hinter der Navbar lesbar sind, 
+  aber nicht von ihr verdeckt blockiert werden */
+    padding: 15px 20px 110px 20px;
+    /* Versteckt den Scrollbalken in Firefox (Desktop & Mobile) */
+    scrollbar-width: none;
+    /* Versteckt den Scrollbalken in IE 10+ und Edge (Legacy) */
+    -ms-overflow-style: none;
+}
+
+/* Versteckt den Scrollbalken in WebKit-Browsern (Chrome, Safari, Edge, Opera) auf dem PC */
+.content::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ========================= Main-View ================================ */
+
+.input-group {
+    padding: 12px 16px;
+    background: var(--bg-card-primary);
+    color: var(--text-main);
+    border: 1px solid #2c2c2e;
+    border-radius: 12px;
+    font-size: 16px;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+#counterInput {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    padding: 12px 16px;
+    background: var(--bg-input);
+    border-radius: 12px;
+    font-size: 16px;
+    border: none;
+}
+
+.addValue {
+    color: var(--text-input);
+}
+
+.addValue::placeholder {
+    color: var(--text-placeholder);
+}
+
+/* counter card auf dem mainView */
+.counter-tile {
+    background-color: var(--bg-card-primary);
+    padding: 16px;
+    border-radius: 14px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.counter-tile:hover {
+    background-color: var(--bg-card-hover);
+}
+
+.tile-info h4 {
+    font-size: 18px;
+    margin-bottom: 4px;
+    color: var(--text-main);
+}
+
+/* die Schrift "update am"*/
+.tile-info p {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.tile-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* .tile-value {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--accent);
+} */
+
+.counterBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+    color: white;
+    border-radius: 50px;
+    border: none;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.add {
+    background: var(--accent);
+    color: black;
+}
+
+.confirm {
+    background: greenyellow;
+    color: black;
+}
+
+.cancelBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding: 12px 16px; */
+    border-radius: 50px;
+    color: black;
+    background-color: red;
+    border: none;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Button zum öffnen des Kontext-Menüs */
+.context-menu-action-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 30px;
+    padding: 20px;
+    border-radius: 35px;
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.context-menu-action-btn:hover {
+    color: var(--accent);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.context-menu-action-btn.activate {
+    color: var(--accent);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Dropdown Kontextmenü */
+.context-menu {
+    position: absolute;
+    right: 15px;
+    background-color: #2c2c2e;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    z-index: 150;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-width: 160px;
+    animation: fadeInMenu 0.15s ease-out;
+}
+
+@keyframes fadeInMenu {
+    from {
+        opacity: 0;
+        scale: 0.95;
+    }
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+.context-menu button {
+    background: none;
+    border: none;
+    color: #fff;
+    padding: 14px 18px; /* 10px 15px; */
+    text-align: left;
+    font-size: 17px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.context-menu button:hover,
+.context-menu button:active {
+    background-color: #3a3a3c;
+}
+
+.context-menu button.delete-option {
+    color: var(--error);
+    border-top: 1px solid #3a3a3c;
+}
+
+/* ========================= Counter-View ============================= */
+
+.back-btn {
+    background: none;
+    border: none;
+    color: var(--accent);
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.5rem;
+}
+
+.counter-box {
+    background-color: var(--bg-card-primary);
+    height: 140px;
+    width: 358px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+#counterValue {
+    font-size: 54px;
+    font-weight: 700;
+}
+
+.counter-buttons-PlusMinus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.counter-btn-plusMinus {
+    height: 50px;
+    width: 174px;
+    border-radius: 50px;
+    margin-bottom: 25px;
+}
+
+.minusBtn {
+    background-color: var(--minusBtn);
+    cursor: pointer;
+}
+
+.plusBtn {
+    background-color: var(--plusBtn);
+    cursor: pointer;
+}
+
+.counter-button-reset {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.counter-btn-reset {
+    height: 50px;
+    width: 200px;
+    border-radius: 50px;
+    margin-bottom: 70px;
+    background-color: var(--resetBtn);
+}
+
+.update-box {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+/* ============================ nav-bar =============================== */
+.navbar {
+    position: absolute;
+    bottom: 2rem; /* Lässt die Navbar über dem Rand schweben */
+    height: 3.75rem;
+    width: 90%; /* Breite der schwebenden Bar */
+    border-radius: 35px; /* Ovales Design */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--bg-navbar);
+    border: 1px solid rgba(255, 255, 255, 0.3); /* leichter glasrand */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    z-index: 100; /* immer im fordergrund */
+}
+
+.navbar::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    border-radius: inherit;
+
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.25),
+        rgba(255, 255, 255, 0.05)
+    );
+
+    pointer-events: none;
+}
+
+.nav-btn {
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: white;
+    width: 190px;
+    height: 55px;
+    border-radius: 35px;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Aktiver Zustand (iOS Style, Accent-Farbe auf Text/Icon) */
+.nav-btn.active {
+    color: var(--accent);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ========================= MOBILE NATIVE LOOK ========================= */
+@media (max-width: 400px) {
+    body {
+        width: 100%;
+        background-color: var(--bg-app);
+        overflow: hidden;
+    }
+
+    .app {
+        width: 100%;
+        max-width: 100%;
+        height: 100vh;
+        height: 100dvh;
+        border-radius: 0;
+        box-sizing: border-box;
+    }
+
+    .screen,
+    main,
+    .content {
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .counter-box {
+        height: 140px;
+        width: 100%;
+        max-width: 358px;
+        box-sizing: border-box;
+    }
+}

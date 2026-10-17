@@ -1,0 +1,144 @@
+<!-- 
+ * COUNTER APP
+ * Copyright (C) 2026 AlphexOne
+ * SPDX-License-Identifier: GPL-3.0-or-later
+-->
+
+
+<!doctype html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
+
+        <meta name="theme-color" content="#111827" />
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta
+            name="apple-mobile-web-app-status-bar-style"
+            content="black-translucent"
+        />
+
+        <!-- PWA Manifest -->
+        <link rel="manifest" href="./manifest.json" />
+
+        <title>Counter-App</title>
+
+        <!-- Favicons -->
+        <link rel="icon" href="./assets/favicons/favicon.png" sizes="any" />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./assets/favicons/CounterApp-32x32.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="./assets/favicons/apple-touch-icon.png"
+        />
+
+        <link rel="stylesheet" href="./style.css" />
+
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        />
+    </head>
+    <body>
+        <div class="app">
+            <div class="screen">
+                <!-- header -->
+                <header class="main-header">
+                    <h1 class="title" id="headerTitle">Counter-App</h1>
+
+                    <button class="counterBtn hidden" id="confirmCounterBtn">
+                        <i class="fa-solid fa-check"></i>
+                    </button>
+
+                    <button class="counterBtn add" id="addCounterBtn">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </header>
+
+                <main id="content">
+                    <!-- mainView -->
+                    <div id="mainView">
+                        <div class="input-group hidden" id="newCounterArea">
+                            <input
+                                type="text"
+                                id="counterInput"
+                                class="addValue"
+                                placeholder="Counter Name"
+                            />
+
+                            <button id="cancelCounterBtn" class="cancelBtn">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                        <div id="counterContainer"></div>
+                    </div>
+
+                    <!-- counterView -->
+                    <div id="counterView">
+                        <div class="counter-box">
+                            <span id="counterValue">0</span>
+                        </div>
+
+                        <div class="counter-buttons-PlusMinus">
+                            <button
+                                id="minusBtn"
+                                class="counter-btn-plusMinus minusBtn"
+                            >
+                                -
+                            </button>
+                            <button
+                                id="plusBtn"
+                                class="counter-btn-plusMinus plusBtn"
+                            >
+                                +
+                            </button>
+                        </div>
+
+                        <div class="counter-button-reset">
+                            <button id="resetBtn" class="counter-btn-reset">
+                                Reset
+                            </button>
+                        </div>
+
+                        <div class="update-box">
+                            <p>
+                                Letztes Update:
+                                <span id="lastUpdated"
+                                    >Noch nicht aktualisiert</span
+                                >
+                            </p>
+                        </div>
+                    </div>
+                </main>
+
+                <!-- Navbar -->
+                <footer class="navbar">
+                    <button class="nav-btn" id="homeBtn">
+                        <i class="fa-solid fa-list-ul"></i>
+                    </button>
+                    <button class="nav-btn" id="counterBtn">
+                        <i class="fa-solid fa-stopwatch"></i>
+                    </button>
+                </footer>
+            </div>
+        </div>
+
+        <script type="module" src="./app.js"></script>
+    </body>
+</html>
+
+<!-- counterCard -->
+<!-- <div class="counter-card" id="counterContainer">
+              <span>counterName</span>
+              <button class="context-menu-action-btn"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+            </div> -->

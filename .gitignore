@@ -58,10 +58,11 @@
 !/app/assets/favicons/apple-touch-icon.png
 !/app/assets/favicons/CounterApp-32x32.png
 !/app/assets/favicons/favicon.png
-#!/app/app.js
-#!/app/index.html
-#!/app/manifest.json
-#!/app/style.css
+!/app/app.js
+!/app/Counter.js
+!/app/index.html
+!/app/manifest.json
+!/app/style.css
 
 !/assets/concepts/Footer.jpg
 !/assets/images/repo-logo.png
