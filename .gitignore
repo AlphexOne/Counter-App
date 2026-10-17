@@ -22,14 +22,16 @@
 # Verzeichnisse wieder erlauben                  # !*/Unterordner/
 ##############################################
 #!*/.docs/
+
 !*/.github/ISSUE_TEMPLATE/
 !*/.github/workflows/
 !*/.github/nichtVerwendeteWorkflows/
-!*/.vscode/
-!*/app/
-!*/app/assets/favicons/
-!*/assets/concets/
 
+!*/.vscode/
+
+!*/app/assets/favicons/
+
+!*/assets/concets/
 !*/assets/images/
 
 ##############################################
@@ -49,19 +51,21 @@
 !/.github/workflows/deploy.yml
 !/.github/workflows/release.yml
 !/.github/PULL_REQUEST_TEMPLATE.md
+
 !/.vscode/settings.json
 
 # app/
-#!/assets/favicons/apple-touch-icon.png
-#!/assets/favicons/CounterApp-32x32.png
-#!/assets/favicons/favicon.png
-#!/app.js
-#!/index.html
-#!/manifest.json
-#!/style.css
+!/app/assets/favicons/apple-touch-icon.png
+!/app/assets/favicons/CounterApp-32x32.png
+!/app/assets/favicons/favicon.png
+#!/app/app.js
+#!/app/index.html
+#!/app/manifest.json
+#!/app/style.css
 
 !/assets/concepts/Footer.jpg
 !/assets/images/repo-logo.png
+
 !/.gitattributes
 !/.gitignore
 !/.prettierignore
