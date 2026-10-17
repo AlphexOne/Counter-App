@@ -11,7 +11,7 @@ export class Counter {
         value = 0,
         updatedAt = null,
         resetEnabled = true,
-        resetInterval = "daily"
+        resetInterval = "daily",
     } = {}) {
         this.id = id;
         this.name = name;
@@ -86,7 +86,7 @@ export class Counter {
             value: this.value,
             updatedAt: this.updatedAt,
             resetEnabled: this.resetEnabled,
-            resetInterval: this.resetInterval
+            resetInterval: this.resetInterval,
         };
     }
 

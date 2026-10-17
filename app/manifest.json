@@ -1,26 +1,26 @@
 {
-    "id": "/",
+    "id": "./",
     "name": "Counter-App",
     "short_name": "Counter",
     "description": "CounterApp",
-    "start_url": "/",
-    "scope": "/",
+    "start_url": "./",
+    "scope": "./",
     "display": "standalone",
     "orientation": "portrait",
     "background_color": "#111827",
     "theme_color": "#111827",
     "icons": [
         {
-            "src": "app/assets/favicons/apple-touch-icon.png",
+            "src": "assets/favicons/apple-touch-icon.png",
             "sizes": "180x180",
             "type": "image/png",
-            "purpose": "any maskable"
+            "purpose": "any"
         },
         {
-            "src": "app/assets/favicons/CounterApp-32x32.png",
+            "src": "assets/favicons/CounterApp-32x32.png",
             "sizes": "32x32",
             "type": "image/png",
-            "purpose": "any maskable"
+            "purpose": "any"
         }
     ]
 }

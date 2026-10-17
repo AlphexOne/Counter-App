@@ -35,12 +35,11 @@ const counterBtn = document.getElementById("counterBtn");
 // const enableResetCheckbox = document.getElementById("enableResetCheckbox");
 
 // ========================= STATE =========================
-let counter = (
-    JSON.parse(localStorage.getItem("trackingCounters")) || []
-).map(data => Counter.fromJSON(data));
+let counter = (JSON.parse(localStorage.getItem("trackingCounters")) || []).map(
+    (data) => Counter.fromJSON(data)
+);
 
-let currentCounterId =
-    localStorage.getItem("currentCounterId") || null;
+let currentCounterId = localStorage.getItem("currentCounterId") || null;
 
 // ========================= HELPERS =========================
 function saveCounter() {
@@ -55,7 +54,7 @@ function saveCounter() {
 function hideAllViews() {
     mainView.classList.add("hidden");
     counterView.classList.add("hidden");
-    
+
     homeBtn.classList.remove("active");
     counterBtn.classList.remove("active");
 }
@@ -63,7 +62,13 @@ function hideAllViews() {
 function formatDate(dateString) {
     if (!dateString) return "Noch nicht aktualisiert";
     const d = new Date(dateString);
-    return d.toLocaleString("de-DE", { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+    return d.toLocaleString("de-DE", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+    });
 }
 
 // ========================= VIEW SWITCH =========================
@@ -82,7 +87,7 @@ function showCounterView() {
     hideAllViews();
 
     if (currentCounterId) {
-        const item = counter.find(c => c.id === currentCounterId);
+        const item = counter.find((c) => c.id === currentCounterId);
         headerTitle.innerText = item ? item.name : "Zähler";
     } else if (counter.length > 0) {
         headerTitle.innerText = counter[0].name;
@@ -108,17 +113,21 @@ function showCounterView() {
 // // ========================= COUNTER LOGIK =========================
 function renderCounter() {
     counterContainer.innerHTML = "";
-    
+
     if (counter.length === 0) {
         counterContainer.innerHTML = `<p style="color: var(--text-muted); text-align: center; margin-top: 20px;">Keine Counter vorhanden. Erstelle einen oben über das Plus!</p>`;
         return;
     }
 
-    counter.forEach(c => {
+    counter.forEach((c) => {
         const tile = document.createElement("div");
         tile.className = "counter-tile";
         tile.addEventListener("click", (e) => {
-            if (e.target.closest('.menu-trigger') || e.target.closest('.context-menu')) return;
+            if (
+                e.target.closest(".menu-trigger") ||
+                e.target.closest(".context-menu")
+            )
+                return;
             openCounter(c.id);
             showCounterView();
         });
@@ -143,17 +152,17 @@ function renderCounter() {
         // Kontextmenü-Trigger
         const trigger = tile.querySelector(".menu-trigger");
         const menu = tile.querySelector(".context-menu");
-        
+
         trigger.addEventListener("click", (e) => {
             e.stopPropagation();
-            
+
             // Schließe andere offene Menüs
-            document.querySelectorAll(".context-menu").forEach(m => {
+            document.querySelectorAll(".context-menu").forEach((m) => {
                 if (m !== menu) m.classList.add("hidden");
             });
-            
+
             const isHidden = menu.classList.contains("hidden");
-            
+
             if (isHidden) {
                 menu.style.visibility = "hidden";
                 menu.classList.remove("hidden");
@@ -165,7 +174,7 @@ function renderCounter() {
                 const containerHeight = contentContainer.clientHeight;
                 const tileTop = tile.offsetTop - contentContainer.scrollTop;
                 const tileHeight = tile.offsetHeight;
-                
+
                 const spaceBelow = containerHeight - (tileTop + tileHeight);
                 const spaceAbove = tileTop;
 
@@ -209,7 +218,7 @@ function renderCounter() {
 
 function openCounter(id) {
     currentCounterId = id;
-    const item = counter.find(c => c.id === id);
+    const item = counter.find((c) => c.id === id);
     if (!item) return;
 
     checkDailyReset(item);
@@ -222,9 +231,7 @@ function openCounter(id) {
 function updateCounter(type) {
     if (!currentCounterId) return;
 
-    const item = counter.find(
-        c => c.id === currentCounterId
-    );
+    const item = counter.find((c) => c.id === currentCounterId);
 
     if (!item) return;
 
@@ -262,15 +269,13 @@ function checkDailyReset(counterItem) {
 
 // // ========================= CREATE / DELETE =========================
 
-
 addCounterBtn.addEventListener("click", () => {
-//    headerTitle.classList.add("hidden");
+    //    headerTitle.classList.add("hidden");
     confirmCounterBtn.classList.remove("hidden");
     addCounterBtn.classList.add("hidden");
     newCounterArea.classList.remove("hidden");
     counterInput.focus();
 });
-
 
 function handleConfirmCounter() {
     const name = counterInput.value.trim();
@@ -287,7 +292,7 @@ function handleConfirmCounter() {
         value: 0,
         updatedAt: null,
         resetEnabled: true,
-        resetInterval: "daily"
+        resetInterval: "daily",
     });
 
     // Counter zur Liste hinzufügen
@@ -332,8 +337,6 @@ cancelCounterBtn.addEventListener("click", () => {
 //     saveCounter();
 //     renderCounter();
 
-
-
 // ========================= EVENTS =========================
 homeBtn.addEventListener("click", showMainView);
 counterBtn.addEventListener("click", showCounterView);
@@ -357,7 +360,7 @@ resetBtn.addEventListener("click", () => {
 
 // ========================= START =========================
 window.addEventListener("load", () => {
-    if (currentCounterId && counter.some(c => c.id === currentCounterId)) {
+    if (currentCounterId && counter.some((c) => c.id === currentCounterId)) {
         showCounterView();
     } else {
         showMainView();
