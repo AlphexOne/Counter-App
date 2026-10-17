@@ -1,6 +1,3 @@
-<br>
-<br>
-
 <div align="center">
   <img src="assets/images/repo-logo.png"
        alt="Counter-App"
