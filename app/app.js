@@ -150,7 +150,9 @@ function renderCounter() {
             showCounterView();
         });
 
-        const resetStatusText = c.resetEnabled ? "Tägl. Reset: AN" : "Tägl. Reset: AUS";
+        const resetStatusText = c.resetEnabled
+            ? "Tägl. Reset: AN"
+            : "Tägl. Reset: AUS";
         const resetStatusClass = c.resetEnabled ? "active" : "inactive";
 
         tile.innerHTML = `
@@ -234,16 +236,19 @@ function renderCounter() {
         });
 
         // Kontextmenü: Tägl. Reset umschalten
-        tile.querySelector(".toggle-reset-option").addEventListener("click", (e) => {
-            e.stopPropagation();
-            menu.classList.add("hidden");
-            c.resetEnabled = !c.resetEnabled;
-            saveCounter();
-            renderCounter();
-            if (currentCounterId === c.id) {
-                dailyResetToggle.checked = c.resetEnabled;
+        tile.querySelector(".toggle-reset-option").addEventListener(
+            "click",
+            (e) => {
+                e.stopPropagation();
+                menu.classList.add("hidden");
+                c.resetEnabled = !c.resetEnabled;
+                saveCounter();
+                renderCounter();
+                if (currentCounterId === c.id) {
+                    dailyResetToggle.checked = c.resetEnabled;
+                }
             }
-        });
+        );
 
         // Kontextmenü: Löschen
         tile.querySelector(".delete-option").addEventListener("click", (e) => {
@@ -340,8 +345,13 @@ dailyResetToggle.addEventListener("change", (e) => {
 
 // Klick außerhalb schließt offene Kontextmenüs
 document.addEventListener("click", (e) => {
-    if (!e.target.closest(".context-menu") && !e.target.closest(".menu-trigger")) {
-        document.querySelectorAll(".context-menu").forEach((m) => m.classList.add("hidden"));
+    if (
+        !e.target.closest(".context-menu") &&
+        !e.target.closest(".menu-trigger")
+    ) {
+        document
+            .querySelectorAll(".context-menu")
+            .forEach((m) => m.classList.add("hidden"));
     }
 });
 
