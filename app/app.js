@@ -1,9 +1,3 @@
-/*
- * COUNTER APP
- * Copyright (C) 2026 AlphexOne
- * SPDX-License-Identifier: GPL-3.0-or-later
- */
-
 import { Counter } from "./Counter.js";
 
 // ========================= ELEMENTE =========================
@@ -11,9 +5,9 @@ const counterInput = document.getElementById("counterInput");
 const addCounterBtn = document.getElementById("addCounterBtn");
 const confirmCounterBtn = document.getElementById("confirmCounterBtn");
 const cancelCounterBtn = document.getElementById("cancelCounterBtn");
-const optionsCounterBtn = document.getElementById("optionsCounterBtn");
 const newCounterArea = document.getElementById("newCounterArea");
 const counterContainer = document.getElementById("counterContainer");
+
 // Views
 const mainView = document.getElementById("mainView");
 const counterView = document.getElementById("counterView");
@@ -21,7 +15,9 @@ const counterView = document.getElementById("counterView");
 const headerTitle = document.getElementById("headerTitle");
 const counterValue = document.getElementById("counterValue");
 const lastUpdated = document.getElementById("lastUpdated");
-// Button
+const dailyResetToggle = document.getElementById("dailyResetToggle");
+
+// Buttons
 const plusBtn = document.getElementById("plusBtn");
 const minusBtn = document.getElementById("minusBtn");
 const resetBtn = document.getElementById("resetBtn");
@@ -30,15 +26,10 @@ const resetBtn = document.getElementById("resetBtn");
 const homeBtn = document.getElementById("homeBtn");
 const counterBtn = document.getElementById("counterBtn");
 
-// SETTINGS ELEMENTE
-// const settingsCounterSelect = document.getElementById("settingsCounterSelect");
-// const enableResetCheckbox = document.getElementById("enableResetCheckbox");
-
 // ========================= STATE =========================
 let counter = (JSON.parse(localStorage.getItem("trackingCounters")) || []).map(
     (data) => Counter.fromJSON(data)
 );
-
 let currentCounterId = localStorage.getItem("currentCounterId") || null;
 
 // ========================= HELPERS =========================
@@ -54,9 +45,9 @@ function saveCounter() {
 function hideAllViews() {
     mainView.classList.add("hidden");
     counterView.classList.add("hidden");
-
     homeBtn.classList.remove("active");
     counterBtn.classList.remove("active");
+    headerTitle.classList.remove("editable");
 }
 
 function formatDate(dateString) {
@@ -71,11 +62,36 @@ function formatDate(dateString) {
     });
 }
 
+// Erzeugt automatische Namen wie "neuer Counter", "neuer Counter 1", etc.
+function generateDefaultName() {
+    const baseName = "neuer Counter";
+    if (!counter.some((c) => c.name === baseName)) {
+        return baseName;
+    }
+    let count = 1;
+    while (counter.some((c) => c.name === `${baseName} ${count}`)) {
+        count++;
+    }
+    return `${baseName} ${count}`;
+}
+
+function deleteCounter(id) {
+    counter = counter.filter((c) => c.id !== id);
+    if (currentCounterId === id) {
+        currentCounterId = counter.length > 0 ? counter[0].id : null;
+    }
+    saveCounter();
+    renderCounter();
+    if (counter.length === 0) {
+        showMainView();
+    }
+}
+
 // ========================= VIEW SWITCH =========================
 function showMainView() {
     hideAllViews();
     headerTitle.innerText = "Counter-App";
-    headerTitle.classList.remove("hidden"); // Titel wieder anzeigen falls ausgeblendet
+    headerTitle.classList.remove("hidden");
     newCounterArea.classList.add("hidden");
     addCounterBtn.classList.remove("hidden");
     mainView.classList.remove("hidden");
@@ -86,31 +102,30 @@ function showMainView() {
 function showCounterView() {
     hideAllViews();
 
-    if (currentCounterId) {
-        const item = counter.find((c) => c.id === currentCounterId);
-        headerTitle.innerText = item ? item.name : "Zähler";
-    } else if (counter.length > 0) {
-        headerTitle.innerText = counter[0].name;
+    let item = counter.find((c) => c.id === currentCounterId);
+    if (!item && counter.length > 0) {
+        item = counter[0];
+        currentCounterId = item.id;
+    }
+
+    if (item) {
+        headerTitle.innerText = item.name;
+        headerTitle.classList.add("editable");
+        openCounter(item.id);
     } else {
         headerTitle.innerText = "Zähler";
+        counterValue.innerText = "0";
+        lastUpdated.innerText = "-";
+        dailyResetToggle.checked = false;
     }
 
     addCounterBtn.classList.add("hidden");
     confirmCounterBtn.classList.add("hidden");
     counterView.classList.remove("hidden");
     counterBtn.classList.add("active");
-
-    if (currentCounterId) {
-        openCounter(currentCounterId);
-    } else if (counter.length > 0) {
-        openCounter(counter[0].id);
-    } else {
-        counterValue.innerText = "0";
-        lastUpdated.innerText = "-";
-    }
 }
 
-// // ========================= COUNTER LOGIK =========================
+// ========================= COUNTER LOGIK =========================
 function renderCounter() {
     counterContainer.innerHTML = "";
 
@@ -120,6 +135,9 @@ function renderCounter() {
     }
 
     counter.forEach((c) => {
+        // Daily-Reset direkt vor dem Rendering prüfen
+        c.checkDailyReset();
+
         const tile = document.createElement("div");
         tile.className = "counter-tile";
         tile.addEventListener("click", (e) => {
@@ -132,31 +150,34 @@ function renderCounter() {
             showCounterView();
         });
 
+        const resetStatusText = c.resetEnabled ? "Tägl. Reset: AN" : "Tägl. Reset: AUS";
+        const resetStatusClass = c.resetEnabled ? "active" : "inactive";
+
         tile.innerHTML = `
             <div class="tile-info">
                 <h4>${c.name}</h4>
                 <p>Update: ${formatDate(c.updatedAt)}</p>
+                <span class="reset-badge ${resetStatusClass}">${resetStatusText}</span>
             </div>
             <div class="tile-right">
-                <span class="tile-value">${c.value}</span>
+                <span class="tile-value" style="font-size:20px; font-weight:600;">${c.value}</span>
                 <button class="menu-trigger"><i class="fa-solid fa-ellipsis-vertical"></i></button>
             </div>
             <div class="context-menu hidden" id="menu-${c.id}">
-                <button class="rename-option">Umbenennen</button>
-                <button class="delete-option">Löschen</button>
+                <button class="rename-option"><i class="fa-solid fa-pen"></i> Umbenennen</button>
+                <button class="toggle-reset-option"><i class="fa-solid fa-rotate-left"></i> ${c.resetEnabled ? "Reset deaktivieren" : "Reset aktivieren"}</button>
+                <button class="delete-option"><i class="fa-solid fa-trash"></i> Löschen</button>
             </div>
         `;
 
         counterContainer.appendChild(tile);
 
-        // Kontextmenü-Trigger
         const trigger = tile.querySelector(".menu-trigger");
         const menu = tile.querySelector(".context-menu");
 
         trigger.addEventListener("click", (e) => {
             e.stopPropagation();
 
-            // Schließe andere offene Menüs
             document.querySelectorAll(".context-menu").forEach((m) => {
                 if (m !== menu) m.classList.add("hidden");
             });
@@ -197,18 +218,37 @@ function renderCounter() {
             }
         });
 
-        // TODO: Umbenennen Aktion
-        tile.querySelector(".rename-option").addEventListener("click", () => {
+        // Kontextmenü: Umbenennen
+        tile.querySelector(".rename-option").addEventListener("click", (e) => {
+            e.stopPropagation();
+            menu.classList.add("hidden");
             const newName = prompt("Neuen Namen eingeben:", c.name);
             if (newName && newName.trim() !== "") {
                 c.name = newName.trim();
                 saveCounter();
                 renderCounter();
+                if (currentCounterId === c.id) {
+                    headerTitle.innerText = c.name;
+                }
             }
         });
 
-        // TODO: Löschen Aktion
-        tile.querySelector(".delete-option").addEventListener("click", () => {
+        // Kontextmenü: Tägl. Reset umschalten
+        tile.querySelector(".toggle-reset-option").addEventListener("click", (e) => {
+            e.stopPropagation();
+            menu.classList.add("hidden");
+            c.resetEnabled = !c.resetEnabled;
+            saveCounter();
+            renderCounter();
+            if (currentCounterId === c.id) {
+                dailyResetToggle.checked = c.resetEnabled;
+            }
+        });
+
+        // Kontextmenü: Löschen
+        tile.querySelector(".delete-option").addEventListener("click", (e) => {
+            e.stopPropagation();
+            menu.classList.add("hidden");
             if (confirm(`Möchtest du "${c.name}" wirklich löschen?`)) {
                 deleteCounter(c.id);
             }
@@ -221,18 +261,17 @@ function openCounter(id) {
     const item = counter.find((c) => c.id === id);
     if (!item) return;
 
-    checkDailyReset(item);
+    item.checkDailyReset();
 
     counterValue.innerText = item.value;
     lastUpdated.innerText = formatDate(item.updatedAt);
+    dailyResetToggle.checked = item.resetEnabled;
     saveCounter();
 }
 
 function updateCounter(type) {
     if (!currentCounterId) return;
-
     const item = counter.find((c) => c.id === currentCounterId);
-
     if (!item) return;
 
     if (type === "plus") {
@@ -250,42 +289,11 @@ function updateCounter(type) {
     renderCounter();
 }
 
-// // ========================= DAILY RESET LOGIK =========================
+// ========================= EVENT HANDLER =========================
 
-function checkDailyReset(counterItem) {
-    return counterItem.checkDailyReset();
-}
-// function checkDailyReset(counterItem) {
-//     if (counterItem.resetEnabled && counterItem.updatedAt) {
-//         const lastDate = new Date(counterItem.updatedAt).setHours(0,0,0,0);
-//         const today = new Date().setHours(0,0,0,0);
-
-//         if (today > lastDate) {
-//             counterItem.value = 0;
-//             counterItem.updatedAt = new Date().toISOString();
-//         }
-//     }
-// }
-
-// // ========================= CREATE / DELETE =========================
-
+// Direktes Erstellen eines Standard-Counters beim Klick auf Plus
 addCounterBtn.addEventListener("click", () => {
-    //    headerTitle.classList.add("hidden");
-    confirmCounterBtn.classList.remove("hidden");
-    addCounterBtn.classList.add("hidden");
-    newCounterArea.classList.remove("hidden");
-    counterInput.focus();
-});
-
-function handleConfirmCounter() {
-    const name = counterInput.value.trim();
-
-    if (!name) {
-        alert("Name fehlt!");
-        return;
-    }
-
-    // Neues Counter-Objekt erstellen
+    const name = generateDefaultName();
     const newCounter = new Counter({
         id: `id_${Date.now()}`,
         name: name,
@@ -295,70 +303,56 @@ function handleConfirmCounter() {
         resetInterval: "daily",
     });
 
-    // Counter zur Liste hinzufügen
     counter.push(newCounter);
     currentCounterId = newCounter.id;
 
-    // Speichern
     saveCounter();
-
-    // Eingabebereich schließen
-    counterInput.value = "";
-    newCounterArea.classList.add("hidden");
-    headerTitle.classList.remove("hidden");
-    addCounterBtn.classList.remove("hidden");
-
-    // Oberfläche aktualisieren
     renderCounter();
     showCounterView();
-}
-
-confirmCounterBtn.addEventListener("click", handleConfirmCounter);
-
-cancelCounterBtn.addEventListener("click", () => {
-    counterInput.value = "";
-    newCounterArea.classList.add("hidden");
-    headerTitle.classList.remove("hidden");
-    addCounterBtn.classList.remove("hidden");
-    confirmCounterBtn.classList.add("hidden");
 });
 
-// // Optionaler Event-Listener für den Drei-Punkte-Button direkt bei der Erstellung
-// optionsCounterBtn.addEventListener("click", () => {
-//     // Hier kannst du zusätzliche Optionen (z.B. Erweitertes Menü / Einstellungen für den neuen Counter) einbauen
-//     console.log("Optionen-Menü für neuen Counter geklickt");
-// });
+// Titel im Header anklicken zum Umbenennen (im Counter-View)
+headerTitle.addEventListener("click", () => {
+    if (!counterView.classList.contains("hidden") && currentCounterId) {
+        const item = counter.find((c) => c.id === currentCounterId);
+        if (item) {
+            const newName = prompt("Neuen Namen eingeben:", item.name);
+            if (newName && newName.trim() !== "") {
+                item.name = newName.trim();
+                headerTitle.innerText = item.name;
+                saveCounter();
+                renderCounter();
+            }
+        }
+    }
+});
 
-// function deleteCounter(id) {
-//     counter = counter.filter(c => c.id !== id);
-//     if (currentCounterId === id) {
-//         currentCounterId = counter.length > 0 ? counter[0].id : null;
-//     }
-//     saveCounter();
-//     renderCounter();
+// Daily Reset Toggle-Switch Event
+dailyResetToggle.addEventListener("change", (e) => {
+    if (!currentCounterId) return;
+    const item = counter.find((c) => c.id === currentCounterId);
+    if (item) {
+        item.resetEnabled = e.target.checked;
+        saveCounter();
+        renderCounter();
+    }
+});
 
-// ========================= EVENTS =========================
+// Klick außerhalb schließt offene Kontextmenüs
+document.addEventListener("click", (e) => {
+    if (!e.target.closest(".context-menu") && !e.target.closest(".menu-trigger")) {
+        document.querySelectorAll(".context-menu").forEach((m) => m.classList.add("hidden"));
+    }
+});
+
 homeBtn.addEventListener("click", showMainView);
 counterBtn.addEventListener("click", showCounterView);
 
-plusBtn.addEventListener("click", () => {
-    updateCounter("plus");
-});
+plusBtn.addEventListener("click", () => updateCounter("plus"));
+minusBtn.addEventListener("click", () => updateCounter("minus"));
+resetBtn.addEventListener("click", () => updateCounter("reset"));
 
-minusBtn.addEventListener("click", () => {
-    updateCounter("minus");
-});
-
-resetBtn.addEventListener("click", () => {
-    updateCounter("reset");
-});
-
-// // Klick außerhalb schließt Kontextmenüs
-// document.addEventListener("click", () => {
-//     document.querySelectorAll(".context-menu").forEach(m => m.classList.add("hidden"));
-// });
-
-// ========================= START =========================
+// Start der App
 window.addEventListener("load", () => {
     if (currentCounterId && counter.some((c) => c.id === currentCounterId)) {
         showCounterView();

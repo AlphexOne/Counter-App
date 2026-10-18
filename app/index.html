@@ -1,9 +1,4 @@
-<!-- 
- * COUNTER APP
- * Copyright (C) 2026 AlphexOne
- * SPDX-License-Identifier: GPL-3.0-or-later
--->
-
+<!-- COUNTER APP -->
 <!doctype html>
 <html lang="de">
     <head>
@@ -12,9 +7,7 @@
             name="viewport"
             content="width=device-width, initial-scale=1, viewport-fit=cover"
         />
-
         <meta name="theme-color" content="#111827" />
-
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta
@@ -22,12 +15,9 @@
             content="black-translucent"
         />
 
-        <!-- PWA Manifest -->
         <link rel="manifest" href="./manifest.json" />
-
         <title>Counter-App</title>
 
-        <!-- Favicons -->
         <link rel="icon" href="./assets/favicons/favicon.png" sizes="any" />
         <link
             rel="icon"
@@ -42,7 +32,6 @@
         />
 
         <link rel="stylesheet" href="./style.css" />
-
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -51,7 +40,7 @@
     <body>
         <div class="app">
             <div class="screen">
-                <!-- header -->
+                <!-- Header -->
                 <header class="main-header">
                     <h1 class="title" id="headerTitle">Counter-App</h1>
 
@@ -74,7 +63,6 @@
                                 class="addValue"
                                 placeholder="Counter Name"
                             />
-
                             <button id="cancelCounterBtn" class="cancelBtn">
                                 <i class="fa-solid fa-xmark"></i>
                             </button>
@@ -109,6 +97,15 @@
                             </button>
                         </div>
 
+                        <!-- Daily Reset Switch -->
+                        <div class="setting-row">
+                            <span>Täglicher Reset:</span>
+                            <label class="switch">
+                                <input type="checkbox" id="dailyResetToggle" />
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+
                         <div class="update-box">
                             <p>
                                 Letztes Update:
@@ -135,9 +132,3 @@
         <script type="module" src="./app.js"></script>
     </body>
 </html>
-
-<!-- counterCard -->
-<!-- <div class="counter-card" id="counterContainer">
-              <span>counterName</span>
-              <button class="context-menu-action-btn"><i class="fa-solid fa-ellipsis-vertical"></i></button>
-            </div> -->

@@ -1,9 +1,3 @@
-/*
- * COUNTER APP
- * Copyright (C) 2026 AlphexOne
- * SPDX-License-Identifier: GPL-3.0-or-later
- */
-
 export class Counter {
     constructor({
         id = `id_${Date.now()}`,
@@ -32,7 +26,6 @@ export class Counter {
             this.value--;
             this.updateTimestamp();
         }
-
         return this.value;
     }
 
