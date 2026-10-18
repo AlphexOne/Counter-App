@@ -21,7 +21,7 @@
 ##############################################
 # Verzeichnisse wieder erlauben                  # !*/Unterordner/
 ##############################################
-#!*/.docs/
+!*/.docs/
 
 !*/.github/ISSUE_TEMPLATE/
 !*/.github/workflows/
@@ -41,7 +41,8 @@
 # - für Dateien in Unterordnern                  # !/Pfad/zur/Datein.txt
 # - für einzelne Dateien                         # !Datein.txt
 ##############################################
-#!/.docs/Überlegungen.md
+!/.docs/Ordnerstruktur.md
+!/.docs/Überlegungen.md
 !/.github/ISSUE_TEMPLATE/bug_report.yml
 !/.github/ISSUE_TEMPLATE/feature_request.yml
 !/.github/ISSUE_TEMPLATE/idea.yml
@@ -64,6 +65,7 @@
 !/app/manifest.json
 !/app/style.css
 
+# assets der repo
 !/assets/concepts/Footer.jpg
 !/assets/images/repo-logo.png
 
