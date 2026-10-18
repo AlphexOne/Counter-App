@@ -6,12 +6,6 @@ on:
       - main
     paths:
       - 'app/**'
-      
-  pull_request:
-    branches:
-      - main
-    paths:
-      - 'app/**'
 
 permissions:
   contents: write
@@ -25,27 +19,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout (WICHTIG: full history + tags)
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      # 2️⃣ Git Setup
       - name: Setup Git
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
 
-      # 3️⃣ Tags sicher holen
       - name: Fetch tags
         run: git fetch --tags --force
 
-      # 4️⃣ Version bestimmen (Patch als Standard, Major/Minor via Commit-Nachricht)
       - name: Determine next version
         run: |
           LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
-
           VERSION=${LAST_TAG#v}
 
           MAJOR=$(echo $VERSION | cut -d. -f1)
@@ -68,31 +57,23 @@ jobs:
           NEXT_VERSION="${MAJOR}.${MINOR}.${PATCH}"
           echo "NEXT_VERSION=$NEXT_VERSION" >> $GITHUB_ENV
 
-      # 5️⃣ Release-Dateien direkt aus dem app-Ordner vorbereiten
       - name: Prepare release folder
         run: |
           rm -rf .release_temp
           mkdir -p .release_temp
-
-          # Kopiert alles, was im app-Ordner liegt (index.html, app.js, Counter.js, style.css, assets, manifest.json)
           cp -r app/* .release_temp/
-          
-          # Falls du die LICENSE oder README im Root hast und mitliefern willst:
           [ -f LICENSE ] && cp LICENSE .release_temp/LICENSE
           [ -f README.md ] && cp README.md .release_temp/README.md
 
-      # 6️⃣ Archive bauen (enthält nun sauber die Struktur direkt aus app/)
       - name: Create archive
         run: |
           tar -czf Counter-App-v${{ env.NEXT_VERSION }}.tar.gz -C .release_temp .
 
-      # 7️⃣ Tag erstellen
       - name: Create Git tag
         run: |
           git tag v${{ env.NEXT_VERSION }}
           git push origin v${{ env.NEXT_VERSION }}
 
-      # 8️⃣ GitHub Release erstellen
       - name: Create GitHub Release
         uses: ncipollo/release-action@v1
         with:
