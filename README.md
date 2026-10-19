@@ -16,24 +16,22 @@
       <img src="https://github.com/AlphexOne/Counter-App/actions/workflows/deploy.yml/badge.svg"
            alt="Pages Status">
     </a>
-    <!-- <a href="http://192.168.0.38:3020/openHub/cheatsheets/actions/workflows/gitea-deploy.yml/badge.svg"
+    <!-- <a href="https://github.com/AlphexOne/Counter-App/actions/workflows/release.yml"
        target="_blank"
        rel="noopener noreferrer">
-      <img src="http://192.168.0.38:3020/openHub/cheatsheets/actions/workflows/gitea-deploy.yml/badge.svg"
-           alt="Gitea Pages Status">
+      <img src="https://github.com/AlphexOne/Counter-App/actions/workflows/release.yml/badge.svg"
+           alt="Release (.tar.gz)">
     </a>
-    <a href="http://192.168.0.38:3020/openHub/cheatsheets/actions/workflows/gitea-deploy.yml/badge.svg"
-       target="_blank"
-       rel="noopener noreferrer">
-      <img src="http://192.168.0.38:3020/openHub/cheatsheets/actions/workflows/gitea-deploy.yml/badge.svg"
-           alt="Gitea Pages Status">
+    <a>
+      [![Release](https://img.shields.io/github/v/release/AlphexOne/Counter-App?display_name=tag&style=flat)](https://github.com/AlphexOne/Counter-App/releases/latest)
     </a>  -->
   </p>
 </div>
 
 <br>
-
-
+<!-- 
+[![Release](https://img.shields.io/github/v/release/AlphexOne/Counter-App?display_name=tag&style=flat)](https://github.com/AlphexOne/Counter-App/releases/latest)
+[![Release (.tar.gz)](https://github.com/AlphexOne/Counter-App/actions/workflows/release.yml/badge.svg)](https://github.com/AlphexOne/Counter-App/actions/workflows/release.yml) -->
 
 <!-- ![Publish Status](https://github.com/PixelPulps/play_a_game/actions/workflows/publish.yml/badge.svg)
 ![Release Workflow](https://github.com/PixelPulps/play_a_game/actions/workflows/release.yml/badge.svg)
