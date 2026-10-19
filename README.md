@@ -16,7 +16,7 @@
       <img src="https://github.com/AlphexOne/Counter-App/actions/workflows/deploy.yml/badge.svg"
            alt="Pages Status">
     </a>
-    <!-- <a href="https://github.com/AlphexOne/Counter-App/actions/workflows/release.yml"
+    <a href="https://github.com/AlphexOne/Counter-App/actions/workflows/release.yml"
        target="_blank"
        rel="noopener noreferrer">
       <img src="https://github.com/AlphexOne/Counter-App/actions/workflows/release.yml/badge.svg"
@@ -24,7 +24,7 @@
     </a>
     <a>
       [![Release](https://img.shields.io/github/v/release/AlphexOne/Counter-App?display_name=tag&style=flat)](https://github.com/AlphexOne/Counter-App/releases/latest)
-    </a>  -->
+    </a> 
   </p>
 </div>
 
