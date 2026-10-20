@@ -11,7 +11,7 @@
     --bg-navbar: rgba(255, 255, 255, 0.2);
     --bg-card-primary: #1c1c1e;
     --bg-card-hover: #2c2c2e;
-    --bg-input: #909096;
+    --bg-input: #292323;
     --card-menu-btn: #8e8e93;
     --text-main: #ffffff;
     --text-muted: #a09999;
@@ -34,6 +34,7 @@
     font-family:
         -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
         sans-serif;
+    touch-action: manipulation; /* Verhindert das Zoomen durch Doppeltippen auf mobilen Geräten */
 }
 
 html,
@@ -73,12 +74,16 @@ body {
     background-color: var(--bg-app);
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow: hidden; /* Verhindert das Scrollen der gesamten App */
 }
 
 .screen {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     padding: 20px;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
 header {
@@ -97,10 +102,19 @@ h1 {
 }
 
 main {
-    flex: 1; /* nimmt den ganzen freien Platz */
-    overflow-y: auto; /* scrollbar, nach unten */
+    flex: 1 1 auto; /* Nimmt den restlichen Platz zwischen Header und Navbar ein */
+    min-height: 0; /* Erzwingt, dass der Container schrumpfen und scrollen kann */
+    overflow-y: auto; /* Aktiviert das Scrollen */
     overflow-x: hidden;
-    padding: 1rem;
+    padding: 1rem 1rem 110px 1rem; /* 110px unten sorgt dafür, dass die letzte Kachel komplett unter die Navbar scrollbar ist */
+    scrollbar-width: none; /* Versteckt den Scrollbalken in Firefox */
+}
+
+/* Versteckt den Scrollbalken in WebKit-Browsern (Chrome, Safari, Edge) */
+main::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
 }
 
 footer {
@@ -111,6 +125,7 @@ footer {
 .content {
     /* Nimmt dynamisch den gesamten restlichen Platz zwischen Header und Navbar ein */
     flex: 1 1 auto;
+    min-height: 0; /* ERZWINGT, dass der Container schrumpfen und scrollen kann! */
     /* Aktiviert das Scrollen NUR in diesem Bereich, sobald er voll ist */
     overflow-y: auto;
     overflow-x: hidden;
@@ -136,7 +151,7 @@ footer {
 
 /* ========================= Main-View ================================ */
 
-.input-group {
+/* .input-group {
     padding: 12px 16px;
     background: var(--bg-card-primary);
     color: var(--text-main);
@@ -148,9 +163,9 @@ footer {
     align-items: center;
     justify-content: center;
     gap: 12px;
-}
+} */
 
-#counterInput {
+/* #counterInput {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -160,15 +175,15 @@ footer {
     border-radius: 12px;
     font-size: 16px;
     border: none;
-}
+} */
 
-.addValue {
+/* .addValue {
     color: var(--text-input);
 }
 
 .addValue::placeholder {
     color: var(--text-placeholder);
-}
+} */
 
 /* counter card auf dem mainView */
 .counter-tile {
@@ -232,29 +247,15 @@ footer {
     color: black;
 }
 
-.confirm {
+/* .confirm {
     background: greenyellow;
     color: black;
-}
+} */
 
-.cancelBtn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* padding: 12px 16px; */
-    border-radius: 50px;
-    color: black;
-    background-color: red;
-    border: none;
-    width: 2rem;
-    height: 2rem;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
 /* Editiermodus für Titel im Header */
 #headerTitle.editable {
     cursor: pointer;
-    border-bottom: 1px dashed var(--accent);
+    /* border-bottom: 1px dashed var(--accent); */
     padding-bottom: 2px;
 }
 
@@ -262,7 +263,7 @@ footer {
     color: var(--accent);
 }
 
-/* Status-Badges auf den Counter-Kacheln */
+/*Info mit Tägl. Reset an oder aus*/
 .tile-info {
     display: flex;
     flex-direction: column;
@@ -358,18 +359,18 @@ input:checked + .slider:before {
 }
 
 /* Button zum öffnen des Kontext-Menüs */
-.context-menu-action-btn {
-    background: none;
+/* .context-menu-action-btn {
+    background: white;
     border: none;
-    color: white;
+    color: black;
     font-size: 30px;
     padding: 20px;
     border-radius: 35px;
     margin-left: auto;
     cursor: pointer;
-}
+} */
 
-.context-menu-action-btn:hover {
+/* .context-menu-action-btn:hover {
     color: var(--accent);
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
@@ -377,7 +378,7 @@ input:checked + .slider:before {
 .context-menu-action-btn.activate {
     color: var(--accent);
     border: 1px solid rgba(255, 255, 255, 0.3);
-}
+} */
 
 /* Dropdown Kontextmenü */
 .context-menu {
@@ -405,6 +406,7 @@ input:checked + .slider:before {
     }
 }
 
+/*Btn im Kontexmenü*/
 .context-menu button {
     background: none;
     border: none;
@@ -428,21 +430,6 @@ input:checked + .slider:before {
 }
 
 /* ========================= Counter-View ============================= */
-
-.back-btn {
-    background: none;
-    border: none;
-    color: var(--accent);
-    font-size: 16px;
-    cursor: pointer;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    width: 2rem;
-    height: 2rem;
-    font-size: 1.5rem;
-}
 
 .counter-box {
     background-color: var(--bg-card-primary);
@@ -506,22 +493,24 @@ input:checked + .slider:before {
     font-size: 14px;
 }
 
-/* ============================ nav-bar =============================== */
+/* ============================ NAV-BAR =============================== */
 .navbar {
     position: absolute;
-    bottom: 2rem; /* Lässt die Navbar über dem Rand schweben */
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     height: 3.75rem;
-    width: 90%; /* Breite der schwebenden Bar */
-    border-radius: 35px; /* Ovales Design */
+    width: 90%;
+    border-radius: 35px;
     display: flex;
     justify-content: space-around;
     align-items: center;
     background-color: var(--bg-navbar);
-    border: 1px solid rgba(255, 255, 255, 0.3); /* leichter glasrand */
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    z-index: 100; /* immer im fordergrund */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    z-index: 100; /* Liegt fest über dem scrollenden Content */
 }
 
 .navbar::before {
@@ -585,8 +574,11 @@ input:checked + .slider:before {
     main,
     .content {
         min-width: 0;
+        min-height: 0;
         max-width: 100%;
         box-sizing: border-box;
+        overflow-y: auto;
+        overflow-x: hidden;
     }
 
     .counter-box {

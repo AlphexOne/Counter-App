@@ -1,10 +1,10 @@
 import { Counter } from "./Counter.js";
 
 // ========================= ELEMENTE =========================
-const counterInput = document.getElementById("counterInput");
+// const counterInput = document.getElementById("counterInput");
 const addCounterBtn = document.getElementById("addCounterBtn");
-const confirmCounterBtn = document.getElementById("confirmCounterBtn");
-const cancelCounterBtn = document.getElementById("cancelCounterBtn");
+// const confirmCounterBtn = document.getElementById("confirmCounterBtn");
+// const cancelCounterBtn = document.getElementById("cancelCounterBtn");
 const newCounterArea = document.getElementById("newCounterArea");
 const counterContainer = document.getElementById("counterContainer");
 
@@ -23,8 +23,8 @@ const minusBtn = document.getElementById("minusBtn");
 const resetBtn = document.getElementById("resetBtn");
 
 // NAV BUTTONS
-const homeBtn = document.getElementById("homeBtn");
-const counterBtn = document.getElementById("counterBtn");
+const mainViewBtn = document.getElementById("mainViewBtn");
+const counterViewBtn = document.getElementById("counterViewBtn");
 
 // ========================= STATE =========================
 let counter = (JSON.parse(localStorage.getItem("trackingCounters")) || []).map(
@@ -45,8 +45,8 @@ function saveCounter() {
 function hideAllViews() {
     mainView.classList.add("hidden");
     counterView.classList.add("hidden");
-    homeBtn.classList.remove("active");
-    counterBtn.classList.remove("active");
+    mainViewBtn.classList.remove("active");
+    counterViewBtn.classList.remove("active");
     headerTitle.classList.remove("editable");
 }
 
@@ -95,7 +95,7 @@ function showMainView() {
     newCounterArea.classList.add("hidden");
     addCounterBtn.classList.remove("hidden");
     mainView.classList.remove("hidden");
-    homeBtn.classList.add("active");
+    mainViewBtn.classList.add("active");
     renderCounter();
 }
 
@@ -120,9 +120,9 @@ function showCounterView() {
     }
 
     addCounterBtn.classList.add("hidden");
-    confirmCounterBtn.classList.add("hidden");
+    // confirmCounterBtn.classList.add("hidden");
     counterView.classList.remove("hidden");
-    counterBtn.classList.add("active");
+    counterViewBtn.classList.add("active");
 }
 
 // ========================= COUNTER LOGIK =========================
@@ -162,8 +162,8 @@ function renderCounter() {
                 <span class="reset-badge ${resetStatusClass}">${resetStatusText}</span>
             </div>
             <div class="tile-right">
-                <span class="tile-value" style="font-size:20px; font-weight:600;">${c.value}</span>
-                <button class="menu-trigger"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                <span class="tile-value" style="font-size:20px; font-weight:600; padding:10px 20px; background:var(--bg-input); border-radius:10px;">${c.value}</span>
+                <button class="menu-trigger" style="width:30px; font-size:30px; padding:10px; background:none; border:none; color:var(--text-muted);"><i class="fa-solid fa-ellipsis-vertical"></i></button>
             </div>
             <div class="context-menu hidden" id="menu-${c.id}">
                 <button class="rename-option"><i class="fa-solid fa-pen"></i> Umbenennen</button>
@@ -205,12 +205,21 @@ function renderCounter() {
                 menu.style.bottom = "auto";
                 menu.style.transform = "none";
 
-                if (spaceBelow < menuHeight && spaceAbove > menuHeight) {
+                // Wenn oben nicht genug Platz ist, öffne das Menü IMMER nach unten
+                if (spaceAbove < menuHeight && spaceBelow >= menuHeight) {
+                    menu.style.top = "85%";
+                }
+                // Wenn unten nicht genug Platz ist, aber oben schon
+                else if (spaceBelow < menuHeight && spaceAbove > menuHeight) {
                     menu.style.bottom = "85%";
-                } else if (spaceBelow < menuHeight && spaceAbove < menuHeight) {
+                }
+                // Wenn beides knapp ist, zentrieren
+                else if (spaceBelow < menuHeight && spaceAbove < menuHeight) {
                     menu.style.top = "50%";
-                    menu.style.transform = "translateY(-50%)";
-                } else {
+                    style.transform = "translateY(-50%)";
+                }
+                // Standardmäßig (wenn genug Platz unten ist) nach unten öffnen
+                else {
                     menu.style.top = "85%";
                 }
 
@@ -355,8 +364,8 @@ document.addEventListener("click", (e) => {
     }
 });
 
-homeBtn.addEventListener("click", showMainView);
-counterBtn.addEventListener("click", showCounterView);
+mainViewBtn.addEventListener("click", showMainView);
+counterViewBtn.addEventListener("click", showCounterView);
 
 plusBtn.addEventListener("click", () => updateCounter("plus"));
 minusBtn.addEventListener("click", () => updateCounter("minus"));
