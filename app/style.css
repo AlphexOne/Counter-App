@@ -74,15 +74,15 @@ body {
     background-color: var(--bg-app);
     display: flex;
     flex-direction: column;
-    overflow: hidden;  /* Verhindert das Scrollen der gesamten App */
+    overflow: hidden; /* Verhindert das Scrollen der gesamten App */
 }
 
-.screen { 
+.screen {
     display: flex;
     flex-direction: column;
     height: 100%;
-    padding: 20px; 
-    overflow: hidden; 
+    padding: 20px;
+    overflow: hidden;
     box-sizing: border-box;
 }
 
@@ -101,20 +101,20 @@ h1 {
     font-weight: 700;
 }
 
-main { 
+main {
     flex: 1 1 auto; /* Nimmt den restlichen Platz zwischen Header und Navbar ein */
-    min-height: 0;  /* Erzwingt, dass der Container schrumpfen und scrollen kann */
+    min-height: 0; /* Erzwingt, dass der Container schrumpfen und scrollen kann */
     overflow-y: auto; /* Aktiviert das Scrollen */
-    overflow-x: hidden; 
+    overflow-x: hidden;
     padding: 1rem 1rem 110px 1rem; /* 110px unten sorgt dafür, dass die letzte Kachel komplett unter die Navbar scrollbar ist */
     scrollbar-width: none; /* Versteckt den Scrollbalken in Firefox */
 }
 
 /* Versteckt den Scrollbalken in WebKit-Browsern (Chrome, Safari, Edge) */
-main::-webkit-scrollbar { 
-    display: none; 
-    width: 0; 
-    height: 0; 
+main::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
 }
 
 footer {
