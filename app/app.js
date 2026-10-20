@@ -205,12 +205,21 @@ function renderCounter() {
                 menu.style.bottom = "auto";
                 menu.style.transform = "none";
 
-                if (spaceBelow < menuHeight && spaceAbove > menuHeight) {
+                // Wenn oben nicht genug Platz ist, öffne das Menü IMMER nach unten
+                if (spaceAbove < menuHeight && spaceBelow >= menuHeight) {
+                    menu.style.top = "85%";
+                } 
+                // Wenn unten nicht genug Platz ist, aber oben schon
+                else if (spaceBelow < menuHeight && spaceAbove > menuHeight) {
                     menu.style.bottom = "85%";
-                } else if (spaceBelow < menuHeight && spaceAbove < menuHeight) {
+                } 
+                // Wenn beides knapp ist, zentrieren
+                else if (spaceBelow < menuHeight && spaceAbove < menuHeight) {
                     menu.style.top = "50%";
-                    menu.style.transform = "translateY(-50%)";
-                } else {
+                    style.transform = "translateY(-50%)";
+                } 
+                // Standardmäßig (wenn genug Platz unten ist) nach unten öffnen
+                else {
                     menu.style.top = "85%";
                 }
 
