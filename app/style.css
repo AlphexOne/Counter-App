@@ -136,7 +136,7 @@ footer {
 
 /* ========================= Main-View ================================ */
 
-.input-group {
+/* .input-group {
     padding: 12px 16px;
     background: var(--bg-card-primary);
     color: var(--text-main);
@@ -148,9 +148,9 @@ footer {
     align-items: center;
     justify-content: center;
     gap: 12px;
-}
+} */
 
-#counterInput {
+/* #counterInput {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -160,15 +160,15 @@ footer {
     border-radius: 12px;
     font-size: 16px;
     border: none;
-}
+} */
 
-.addValue {
+/* .addValue {
     color: var(--text-input);
 }
 
 .addValue::placeholder {
     color: var(--text-placeholder);
-}
+} */
 
 /* counter card auf dem mainView */
 .counter-tile {
@@ -232,28 +232,15 @@ footer {
     color: black;
 }
 
-.confirm {
+/* .confirm {
     background: greenyellow;
     color: black;
-}
+} */
 
-.cancelBtn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* padding: 12px 16px; */
-    border-radius: 50px;
-    color: black;
-    background-color: red;
-    border: none;
-    width: 2rem;
-    height: 2rem;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
 /* Editiermodus für Titel im Header */
 #headerTitle.editable {
     cursor: pointer;
+    /*TODO: border-bottom ist die strichlierte linie darunter*/
     border-bottom: 1px dashed var(--accent);
     padding-bottom: 2px;
 }
@@ -262,7 +249,7 @@ footer {
     color: var(--accent);
 }
 
-/* Status-Badges auf den Counter-Kacheln */
+/*Info mit Tägl. Reset an oder aus*/
 .tile-info {
     display: flex;
     flex-direction: column;
@@ -405,6 +392,7 @@ input:checked + .slider:before {
     }
 }
 
+/*Btn im Kontexmenü*/
 .context-menu button {
     background: none;
     border: none;
@@ -428,21 +416,6 @@ input:checked + .slider:before {
 }
 
 /* ========================= Counter-View ============================= */
-
-.back-btn {
-    background: none;
-    border: none;
-    color: var(--accent);
-    font-size: 16px;
-    cursor: pointer;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    width: 2rem;
-    height: 2rem;
-    font-size: 1.5rem;
-}
 
 .counter-box {
     background-color: var(--bg-card-primary);

@@ -1,4 +1,9 @@
-<!-- COUNTER APP -->
+<!-- 
+ * COUNTER APP
+ * Copyright (C) 2026 AlphexOne
+ * SPDX-License-Identifier: GPL-3.0-or-later 
+-->
+
 <!doctype html>
 <html lang="de">
     <head>
@@ -44,9 +49,9 @@
                 <header class="main-header">
                     <h1 class="title" id="headerTitle">Counter-App</h1>
 
-                    <button class="counterBtn hidden" id="confirmCounterBtn">
+                    <!-- <button class="counterBtn hidden">
                         <i class="fa-solid fa-check"></i>
-                    </button>
+                    </button> -->
 
                     <button class="counterBtn add" id="addCounterBtn">
                         <i class="fa-solid fa-plus"></i>
@@ -57,15 +62,15 @@
                     <!-- mainView -->
                     <div id="mainView">
                         <div class="input-group hidden" id="newCounterArea">
-                            <input
+                            <!-- <input
                                 type="text"
                                 id="counterInput"
                                 class="addValue"
                                 placeholder="Counter Name"
-                            />
-                            <button id="cancelCounterBtn" class="cancelBtn">
+                            /> -->
+                            <!-- <button id="cancelCounterBtn" class="cancelBtn">
                                 <i class="fa-solid fa-xmark"></i>
-                            </button>
+                            </button> -->
                         </div>
                         <div id="counterContainer"></div>
                     </div>
@@ -119,10 +124,10 @@
 
                 <!-- Navbar -->
                 <footer class="navbar">
-                    <button class="nav-btn" id="homeBtn">
+                    <button class="nav-btn" id="mainViewBtn">
                         <i class="fa-solid fa-list-ul"></i>
                     </button>
-                    <button class="nav-btn" id="counterBtn">
+                    <button class="nav-btn" id="counterViewBtn">
                         <i class="fa-solid fa-stopwatch"></i>
                     </button>
                 </footer>
