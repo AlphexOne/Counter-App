@@ -255,8 +255,7 @@ footer {
 /* Editiermodus für Titel im Header */
 #headerTitle.editable {
     cursor: pointer;
-    /*TODO: border-bottom ist die strichlierte linie darunter*/
-    border-bottom: 1px dashed var(--accent);
+    /* border-bottom: 1px dashed var(--accent); */
     padding-bottom: 2px;
 }
 
