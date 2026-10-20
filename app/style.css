@@ -11,7 +11,7 @@
     --bg-navbar: rgba(255, 255, 255, 0.2);
     --bg-card-primary: #1c1c1e;
     --bg-card-hover: #2c2c2e;
-    --bg-input: #909096;
+    --bg-input: #292323;
     --card-menu-btn: #8e8e93;
     --text-main: #ffffff;
     --text-muted: #a09999;
@@ -345,18 +345,18 @@ input:checked + .slider:before {
 }
 
 /* Button zum öffnen des Kontext-Menüs */
-.context-menu-action-btn {
-    background: none;
+/* .context-menu-action-btn {
+    background: white;
     border: none;
-    color: white;
+    color: black;
     font-size: 30px;
     padding: 20px;
     border-radius: 35px;
     margin-left: auto;
     cursor: pointer;
-}
+} */
 
-.context-menu-action-btn:hover {
+/* .context-menu-action-btn:hover {
     color: var(--accent);
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
@@ -364,7 +364,7 @@ input:checked + .slider:before {
 .context-menu-action-btn.activate {
     color: var(--accent);
     border: 1px solid rgba(255, 255, 255, 0.3);
-}
+} */
 
 /* Dropdown Kontextmenü */
 .context-menu {
