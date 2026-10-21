@@ -161,7 +161,7 @@ function renderCounter() {
                 <p>Update: ${formatDate(c.updatedAt)}</p>
                 <span class="reset-badge ${resetStatusClass}">${resetStatusText}</span>
             </div>
-            <div class="tile-right">
+            <div class="tile-right" style="">
                 <span class="tile-value" style="font-size:20px; font-weight:600; padding:10px 20px; background:var(--bg-input); border-radius:10px;">${c.value}</span>
                 <button class="menu-trigger" style="width:30px; font-size:30px; padding:10px; background:none; border:none; color:var(--text-muted);"><i class="fa-solid fa-ellipsis-vertical"></i></button>
             </div>
@@ -228,7 +228,7 @@ function renderCounter() {
                 menu.classList.add("hidden");
             }
         });
-
+        // TODO: Issue #21
         // Kontextmenü: Umbenennen
         tile.querySelector(".rename-option").addEventListener("click", (e) => {
             e.stopPropagation();
