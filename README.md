@@ -6,9 +6,6 @@
         Counter-App
     </h2>
     <p>
-        <strong>Eine elegante, mobile-optimierte Web-App zum Verwalten und Zählen verschiedener Werte (mit optionalem täglichen Automatisch-Reset), entwickelt mit modernem JavaScript (ES Modules), HTML5 und CSS3.</strong>
-    </p>
-    <p>
         <a href="https://github.com/AlphexOne/Counter-App/actions/workflows/deploy.yml"
         target="_blank"
         rel="noopener noreferrer">
@@ -25,6 +22,9 @@
         <img src="https://img.shields.io/github/v/release/AlphexOne/Counter-App?display_name=tag&style=flat"
             alt="Latest Release">
         </a>
+    </p>
+    <p>
+        <strong>Eine elegante, mobile-optimierte Web-App zum Verwalten und Zählen verschiedener Werte (mit optionalem täglichen Automatisch-Reset), entwickelt mit modernem JavaScript (ES Modules), HTML5 und CSS3.</strong>
     </p>
 </div>
 
