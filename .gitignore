@@ -25,7 +25,6 @@
 
 !*/.github/ISSUE_TEMPLATE/
 !*/.github/workflows/
-!*/.github/nichtVerwendeteWorkflows/
 
 !*/.vscode/
 
@@ -47,8 +46,6 @@
 !/.github/ISSUE_TEMPLATE/feature_request.yml
 !/.github/ISSUE_TEMPLATE/idea.yml
 !/.github/ISSUE_TEMPLATE/task.yml
-!/.github/nichtVerwendeteWorkflows/Demo.yml
-!/.github/nichtVerwendeteWorkflows/publish.yml
 !/.github/workflows/deploy.yml
 !/.github/workflows/format-check.yml
 !/.github/workflows/release.yml
