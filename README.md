@@ -61,6 +61,7 @@ Da es sich um eine Progressive Web App (PWA) handelt, kannst du die Anwendung di
 ## Projektstruktur
 
 ```text
+app/
 ├── index.html        # Hauptstruktur der App
 ├── style.css         # Styling im iOS-Dunkelmodus-Design
 ├── app.js            # Anwendungslogik & State-Management
