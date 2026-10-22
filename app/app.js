@@ -233,8 +233,7 @@ function renderCounter() {
                 menu.classList.add("hidden");
             }
         });
-        // TODO: Issue #21
-        // Kontextmenü: Umbenennen
+
         tile.querySelector(".rename-option").addEventListener("click", (e) => {
             e.stopPropagation();
             menu.classList.add("hidden");
@@ -243,7 +242,9 @@ function renderCounter() {
                 c.name = newName.trim();
                 saveCounter();
                 renderCounter();
-                if (currentCounterId === c.id) {
+                
+                // NUR aktualisieren, wenn der Counter aktiv ist UND wir uns in der Detailansicht befinden
+                if (currentCounterId === c.id && !counterView.classList.contains("hidden")) {
                     headerTitle.innerText = c.name;
                 }
             }
