@@ -505,6 +505,21 @@ input:checked + .slider:before {
     cursor: pointer;
 }
 
+/* Hover-Effekte für die Counter-View Buttons */
+.minusBtn:hover,
+.plusBtn:hover,
+.counter-btn-reset:hover {
+    filter: brightness(1.20); /* Lässt den Button beim Hover etwas heller/leuchtender werden */
+    transition: filter 0.2s ease;
+}
+
+/* Übergang auch beim Verlassen des Hover-Zustands sanft machen */
+.minusBtn,
+.plusBtn,
+.counter-btn-reset {
+    transition: filter 0.2s ease;
+}
+
 .update-box {
     text-align: center;
     color: var(--text-muted);
