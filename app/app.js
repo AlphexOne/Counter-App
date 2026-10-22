@@ -242,9 +242,12 @@ function renderCounter() {
                 c.name = newName.trim();
                 saveCounter();
                 renderCounter();
-                
+
                 // NUR aktualisieren, wenn der Counter aktiv ist UND wir uns in der Detailansicht befinden
-                if (currentCounterId === c.id && !counterView.classList.contains("hidden")) {
+                if (
+                    currentCounterId === c.id &&
+                    !counterView.classList.contains("hidden")
+                ) {
                     headerTitle.innerText = c.name;
                 }
             }

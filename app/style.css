@@ -509,7 +509,9 @@ input:checked + .slider:before {
 .minusBtn:hover,
 .plusBtn:hover,
 .counter-btn-reset:hover {
-    filter: brightness(1.20); /* Lässt den Button beim Hover etwas heller/leuchtender werden */
+    filter: brightness(
+        1.2
+    ); /* Lässt den Button beim Hover etwas heller/leuchtender werden */
     transition: filter 0.2s ease;
 }
 
@@ -574,7 +576,10 @@ input:checked + .slider:before {
     padding: 0;
     cursor: pointer;
     /* transition: all 0.2s ease; */
-    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease;
 }
 
 /* Aktiver Zustand (iOS Style, Accent-Farbe auf Text/Icon) */
