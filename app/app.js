@@ -83,6 +83,7 @@ function deleteCounter(id) {
     saveCounter();
     renderCounter();
     if (counter.length === 0) {
+        counterViewBtn.classList.add("disabled"); // Button direkt sperren
         showMainView();
     }
 }
