@@ -204,22 +204,22 @@ footer {
     background-color: var(--bg-card-hover);
 }
 
-/* .tile-info h4 {
+.tile-info h4 {
     font-size: 18px;
     margin-bottom: 4px;
     color: var(--text-main);
-} */
+}
 
 /* die Schrift "update am"*/
-/* .tile-info p {
+.tile-info p {
     font-size: 13px;
     color: var(--text-muted);
-} */
+}
 
-/* .tile-right {
+.tile-right {
     display: flex;
     align-items: center;
-} */
+}
 
 /* .tile-value {
   font-size: 20px;
@@ -551,6 +551,19 @@ input:checked + .slider:before {
     color: var(--accent);
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
+/*==============================================================================================*/
+/* Deaktivierter Nav-Button, wenn keine Counter vorhanden sind */
+.nav-btn.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.nav-btn.disabled:hover {
+    color: inherit;
+    border: none;
+}
+/*==============================================================================================*/
 
 /* ========================= MOBILE NATIVE LOOK ========================= */
 @media (max-width: 400px) {

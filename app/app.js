@@ -129,9 +129,13 @@ function showCounterView() {
 function renderCounter() {
     counterContainer.innerHTML = "";
 
+    // Button-Status basierend auf vorhandenen Countern aktualisieren
     if (counter.length === 0) {
+        counterViewBtn.classList.add("disabled");
         counterContainer.innerHTML = `<p style="color: var(--text-muted); text-align: center; margin-top: 20px;">Keine Counter vorhanden. Erstelle einen oben über das Plus!</p>`;
         return;
+    } else {
+        counterViewBtn.classList.remove("disabled");
     }
 
     counter.forEach((c) => {
@@ -216,7 +220,7 @@ function renderCounter() {
                 // Wenn beides knapp ist, zentrieren
                 else if (spaceBelow < menuHeight && spaceAbove < menuHeight) {
                     menu.style.top = "50%";
-                    style.transform = "translateY(-50%)";
+                    menu.style.transform = "translateY(-50%)";
                 }
                 // Standardmäßig (wenn genug Platz unten ist) nach unten öffnen
                 else {
@@ -373,6 +377,10 @@ resetBtn.addEventListener("click", () => updateCounter("reset"));
 
 // Start der App
 window.addEventListener("load", () => {
+    if (counter.length === 0) {
+        counterViewBtn.classList.add("disabled");
+    }
+
     if (currentCounterId && counter.some((c) => c.id === currentCounterId)) {
         showCounterView();
     } else {
