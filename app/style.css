@@ -239,6 +239,7 @@ footer {
     height: 2rem;
     font-size: 1.5rem;
     cursor: pointer;
+    flex-shrink: 0; /* Verhindert das Stauchen/Schmälern auf kleinen Bildschirmen */
 }
 
 .add {
