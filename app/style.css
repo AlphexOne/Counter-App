@@ -451,14 +451,23 @@ input:checked + .slider:before {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 12px; /* Etwas mehr Abstand zwischen Plus und Minus */
+    width: 100%;
+    max-width: 358px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
 }
 
 .counter-btn-plusMinus {
-    height: 50px;
-    width: 174px;
-    border-radius: 50px;
-    margin-bottom: 25px;
+    height: 60px; /* Von 50px auf 60px vergrößert für bessere Touch-Bedienung */
+    flex: 1; /* Teilt sich den Platz gleichmäßig (50/50) */
+    width: auto; /* Feste Breite entfernt, passt sich flexibel an */
+    border-radius: 25px;
+    font-size: 28px; /* Größeres Plus-/Minus-Zeichen */
+    font-weight: 600;
+    border: none;
+    color: #fff;
 }
 
 .minusBtn {
@@ -475,15 +484,24 @@ input:checked + .slider:before {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    max-width: 358px;
+    margin-left: auto;
+    margin-right: auto;
     cursor: pointer;
 }
 
 .counter-btn-reset {
-    height: 50px;
-    width: 200px;
-    border-radius: 50px;
+    height: 35px; /* Etwas höher gemacht */
+    width: 100%; /* Füllt die Box komplett aus */
+    border-radius: 25px;
     margin-bottom: 70px;
     background-color: var(--resetBtn);
+    color: #fff;
+    font-size: 18px; /* Größere Schrift */
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
 }
 
 .update-box {
