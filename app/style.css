@@ -8,7 +8,7 @@
 :root {
     --bg-body: #222;
     --bg-app: #09090b;
-    --bg-navbar: rgba(255, 255, 255, 0.2);
+    --bg-navbar: rgba(255, 255, 255, 0.016);
     --bg-card-primary: #1c1c1e;
     --bg-card-hover: #2c2c2e;
     --bg-input: #292323;
@@ -542,7 +542,7 @@ input:checked + .slider:before {
     align-items: center;
     background-color: var(--bg-navbar);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(0px);
     -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
     z-index: 100; /* Liegt fest über dem scrollenden Content */
@@ -570,8 +570,8 @@ input:checked + .slider:before {
     border: 1px solid transparent;
     border: none;
     color: white;
-    width: 190px;
-    height: 55px;
+    width: 100px; /*war auf 190px, 55px*/
+    height: 50px;
     border-radius: 35px;
     padding: 0;
     cursor: pointer;
@@ -585,14 +585,15 @@ input:checked + .slider:before {
 /* Aktiver Zustand (iOS Style, Accent-Farbe auf Text/Icon) */
 .nav-btn.active {
     color: var(--accent);
-    border-color: transparent;
+    /* border-color: transparent; */
+    background-color: black;
     /* border: 1px  rgba(255, 255, 255, 0.3) */
 }
 
 .nav-btn:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-    color: var(--text-main);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: black;
+    color: var(--accent);
+    /* border: 1px solid rgba(255, 255, 255, 0.3); */
 }
 
 /* Deaktivierter Nav-Button, wenn keine Counter vorhanden sind */
