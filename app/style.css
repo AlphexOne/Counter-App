@@ -219,7 +219,6 @@ footer {
 .tile-right {
     display: flex;
     align-items: center;
-    gap: 15px;
 }
 
 /* .tile-value {
@@ -240,6 +239,7 @@ footer {
     height: 2rem;
     font-size: 1.5rem;
     cursor: pointer;
+    flex-shrink: 0; /* Verhindert das Stauchen/Schmälern auf kleinen Bildschirmen */
 }
 
 .add {
@@ -452,14 +452,23 @@ input:checked + .slider:before {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 12px; /* Etwas mehr Abstand zwischen Plus und Minus */
+    width: 100%;
+    max-width: 358px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
 }
 
 .counter-btn-plusMinus {
-    height: 50px;
-    width: 174px;
-    border-radius: 50px;
-    margin-bottom: 25px;
+    height: 60px; /* Von 50px auf 60px vergrößert für bessere Touch-Bedienung */
+    flex: 1; /* Teilt sich den Platz gleichmäßig (50/50) */
+    width: auto; /* Feste Breite entfernt, passt sich flexibel an */
+    border-radius: 25px;
+    font-size: 28px; /* Größeres Plus-/Minus-Zeichen */
+    font-weight: 600;
+    border: none;
+    color: #fff;
 }
 
 .minusBtn {
@@ -476,15 +485,41 @@ input:checked + .slider:before {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    max-width: 358px;
+    margin-left: auto;
+    margin-right: auto;
     cursor: pointer;
 }
 
 .counter-btn-reset {
-    height: 50px;
-    width: 200px;
-    border-radius: 50px;
+    height: 35px; /* Etwas höher gemacht */
+    width: 100%; /* Füllt die Box komplett aus */
+    border-radius: 25px;
     margin-bottom: 70px;
     background-color: var(--resetBtn);
+    color: #fff;
+    font-size: 18px; /* Größere Schrift */
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+
+/* Hover-Effekte für die Counter-View Buttons */
+.minusBtn:hover,
+.plusBtn:hover,
+.counter-btn-reset:hover {
+    filter: brightness(
+        1.2
+    ); /* Lässt den Button beim Hover etwas heller/leuchtender werden */
+    transition: filter 0.2s ease;
+}
+
+/* Übergang auch beim Verlassen des Hover-Zustands sanft machen */
+.minusBtn,
+.plusBtn,
+.counter-btn-reset {
+    transition: filter 0.2s ease;
 }
 
 .update-box {
@@ -532,6 +567,7 @@ input:checked + .slider:before {
 .nav-btn {
     font-size: 30px;
     background: none;
+    border: 1px solid transparent;
     border: none;
     color: white;
     width: 190px;
@@ -539,18 +575,37 @@ input:checked + .slider:before {
     border-radius: 35px;
     padding: 0;
     cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.nav-btn:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    /* transition: all 0.2s ease; */
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease;
 }
 
 /* Aktiver Zustand (iOS Style, Accent-Farbe auf Text/Icon) */
 .nav-btn.active {
     color: var(--accent);
+    border-color: transparent;
+    /* border: 1px  rgba(255, 255, 255, 0.3) */
+}
+
+.nav-btn:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--text-main);
     border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Deaktivierter Nav-Button, wenn keine Counter vorhanden sind */
+.nav-btn.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+    border: none;
+}
+
+.nav-btn.disabled:hover {
+    color: inherit;
+    border: none;
 }
 
 /* ========================= MOBILE NATIVE LOOK ========================= */

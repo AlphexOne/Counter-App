@@ -83,6 +83,7 @@ function deleteCounter(id) {
     saveCounter();
     renderCounter();
     if (counter.length === 0) {
+        counterViewBtn.classList.add("disabled"); // Button direkt sperren
         showMainView();
     }
 }
@@ -129,9 +130,13 @@ function showCounterView() {
 function renderCounter() {
     counterContainer.innerHTML = "";
 
+    // Button-Status basierend auf vorhandenen Countern aktualisieren
     if (counter.length === 0) {
+        counterViewBtn.classList.add("disabled");
         counterContainer.innerHTML = `<p style="color: var(--text-muted); text-align: center; margin-top: 20px;">Keine Counter vorhanden. Erstelle einen oben über das Plus!</p>`;
         return;
+    } else {
+        counterViewBtn.classList.remove("disabled");
     }
 
     counter.forEach((c) => {
@@ -161,7 +166,7 @@ function renderCounter() {
                 <p>Update: ${formatDate(c.updatedAt)}</p>
                 <span class="reset-badge ${resetStatusClass}">${resetStatusText}</span>
             </div>
-            <div class="tile-right">
+            <div class="tile-right" style="">
                 <span class="tile-value" style="font-size:20px; font-weight:600; padding:10px 20px; background:var(--bg-input); border-radius:10px;">${c.value}</span>
                 <button class="menu-trigger" style="width:30px; font-size:30px; padding:10px; background:none; border:none; color:var(--text-muted);"><i class="fa-solid fa-ellipsis-vertical"></i></button>
             </div>
@@ -216,7 +221,7 @@ function renderCounter() {
                 // Wenn beides knapp ist, zentrieren
                 else if (spaceBelow < menuHeight && spaceAbove < menuHeight) {
                     menu.style.top = "50%";
-                    style.transform = "translateY(-50%)";
+                    menu.style.transform = "translateY(-50%)";
                 }
                 // Standardmäßig (wenn genug Platz unten ist) nach unten öffnen
                 else {
@@ -229,7 +234,6 @@ function renderCounter() {
             }
         });
 
-        // Kontextmenü: Umbenennen
         tile.querySelector(".rename-option").addEventListener("click", (e) => {
             e.stopPropagation();
             menu.classList.add("hidden");
@@ -238,7 +242,12 @@ function renderCounter() {
                 c.name = newName.trim();
                 saveCounter();
                 renderCounter();
-                if (currentCounterId === c.id) {
+
+                // NUR aktualisieren, wenn der Counter aktiv ist UND wir uns in der Detailansicht befinden
+                if (
+                    currentCounterId === c.id &&
+                    !counterView.classList.contains("hidden")
+                ) {
                     headerTitle.innerText = c.name;
                 }
             }
@@ -373,6 +382,10 @@ resetBtn.addEventListener("click", () => updateCounter("reset"));
 
 // Start der App
 window.addEventListener("load", () => {
+    if (counter.length === 0) {
+        counterViewBtn.classList.add("disabled");
+    }
+
     if (currentCounterId && counter.some((c) => c.id === currentCounterId)) {
         showCounterView();
     } else {
